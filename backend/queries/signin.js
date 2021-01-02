@@ -1,1 +1,0 @@
-exports.GET_USER_PASSWORD = `SELECT user_id, user_password FROM Users WHERE user_email = ?;`
