@@ -1,5 +1,6 @@
 # Config
-./backend/config/
+*/backend/config/database.js
+*/backend/config/jwt.js
 
 # Logs
 logs
