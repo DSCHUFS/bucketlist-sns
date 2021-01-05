@@ -8,6 +8,7 @@ app.use(express.json());
 
 app.use("/signup", signupRouter);
 app.use("/signin", signinRouter);
+app.use("/tag", tagRouter);
 
 app.use("/bucket", bucketRouter);
 
