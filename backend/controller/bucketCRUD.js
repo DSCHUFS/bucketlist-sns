@@ -1,7 +1,5 @@
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 const db = require("../config/database");
-const { secretKey } = require("../config/jwt");
+const moment = require('./timeStamp')
 const {
   CREATE_BUCKET,
   READ_BUCKET,
@@ -11,8 +9,10 @@ const {
 
 const createBucket = async (req, res) => {
   try {
+    const user_id = res.user_id
+    const bucketProgress = -1 // -1: 진행전, 0: 도전중, 1: 완료 (변경가능)
+    const bucketCreateAt = moment.datetime()
     const {
-      user,
       bucketTitle,
       bucketContents,
       bucketDday,
@@ -22,11 +22,13 @@ const createBucket = async (req, res) => {
     let result = await db
       .promise()
       .query(CREATE_BUCKET, [
-        user,
+        user_id,
         bucketTitle,
         bucketContents,
+        bucketCreateAt,
         bucketDday,
         bucketLocation,
+        bucketProgress
       ]);
 
     if (result === undefined) {
@@ -42,7 +44,7 @@ const createBucket = async (req, res) => {
 };
 
 const readBucket = async (req, res) => {
-  try {
+  try { 
     const { bucketId } = req.params;
     let result = await db.promise().query(READ_BUCKET, [bucketId]);
     console.log(result[0]);
@@ -56,6 +58,7 @@ const readBucket = async (req, res) => {
   }
 };
 
+// (유진이 추가) TODO: 변경된 항목만 db에서 update하기
 const updateBucket = async (req, res) => {
   try {
     const {
@@ -88,8 +91,9 @@ const updateBucket = async (req, res) => {
 
 const deleteBucket = async (req, res) => {
   try {
+    const user_id = res.user_id
     const { bucketId } = req.params;
-    let result = await db.promise().query(DELETE_BUCKET, [bucketId]);
+    let result = await db.promise().query(DELETE_BUCKET, [bucketId, user_id]);
     console.log(result[0]);
     if (result === undefined) {
       res.status(400).json({ message: "fail" });

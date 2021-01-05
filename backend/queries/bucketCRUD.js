@@ -1,4 +1,4 @@
-const CREATE_BUCKET = `INSERT INTO Buckets VALUES ? ? ? ? ? ?;`;
+const CREATE_BUCKET = `INSERT INTO Buckets(user_id, bucket_title, bucket_contents, bucket_create_at, bucket_dday, bucket_location, bucket_progress) VALUES (?, ?, ?, ?, ?, ?, ?);`;
 const READ_BUCKET = `SELECT * FROM Buckets WHERE bucket_id = ?;`;
 const UPDATE_BUCKET = `
   UPDATE Buckets
@@ -9,7 +9,7 @@ const UPDATE_BUCKET = `
   SET bucket_progress = ?
   WHERE bucket_id = ?
 `;
-const DELETE_BUCKET = `DELETE FROM Buckets WHERE bucket_id = ?`;
+const DELETE_BUCKET = `DELETE FROM Buckets WHERE bucket_id = ? and user_id = ?`;
 const LIST_BUCKET = ``;
 
 module.exports = {
