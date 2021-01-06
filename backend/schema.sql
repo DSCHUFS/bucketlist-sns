@@ -50,7 +50,8 @@ CREATE TABLE `PushButtons` (
 CREATE TABLE `Tags` (
   `tag_id` int(11) NOT NULL AUTO_INCREMENT,
   `tag_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`tag_id`)
+  PRIMARY KEY (`tag_id`),
+  UNIQUE KEY `Tags_UN` (`tag_name`)
 )
 
 CREATE TABLE `BucketTags` (

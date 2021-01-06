@@ -1,6 +1,7 @@
 const express = require("express");
 const signupRouter = require("./router/signup");
 const signinRouter = require("./router/signin");
+const tagRouter = require('./router/tag')
 const bucketRouter = require("./router/bucketCRUD");
 
 const app = express();
@@ -8,6 +9,7 @@ app.use(express.json());
 
 app.use("/signup", signupRouter);
 app.use("/signin", signinRouter);
+app.use("/tag", tagRouter);
 
 app.use("/bucket", bucketRouter);
 
