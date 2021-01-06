@@ -6,12 +6,12 @@ const signupQuery = require('../queries/signup')
 const saltRounds = 10
 
 const findAndInsertTag = async (tag_name) => { // bucket에서 tag 등록시에도 사용할 수 있을 듯
-    let select_tag_id = await db.promise().query(`SELECT tag_id FROM Tags WHERE tag_name = ?;`, [tag_name]) // tag 검색
+    let select_tag_id = await db.promise().query(signupQuery.FIND_TAG_ID, [tag_name]) // tag 검색
     let tag_id = 0
     if(select_tag_id[0][0]) { // 이미 존재하는 태그(해당 태그의 tag_id return)
         tag_id = select_tag_id[0][0].tag_id
     } else { // 존재하지 않는 태그(새로운 태그 등록 후 tag_id return)
-        let insert_tag_id = await db.promise().query(`INSERT INTO Tags (tag_name) VALUES (?);`, [tag_name])
+        let insert_tag_id = await db.promise().query(signupQuery.INSERT_TAG, [tag_name])
         tag_id = insert_tag_id[0].insertId
     }
     return tag_id
@@ -36,7 +36,7 @@ exports.signupAPI = async(req, res) => {
         for (let i = 0; i < tags.length; i++) {
             const tag_id = await findAndInsertTag(tags[i])
             console.log(`tag_id : ${tag_id}`)
-            await db.promise().query(`INSERT INTO FollowingTags (user_id, tag_id) VALUES(?, ?)`, [user_id, tag_id])
+            await db.promise().query(signupQuery.FOLLOWING_TAG, [user_id, tag_id])
         }
 
         res.status(200).json({'msg' : `signup success`})
