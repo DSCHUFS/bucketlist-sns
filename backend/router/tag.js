@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 const tagController = require('../controller/tag')
 
-router.post('/following', tagController.followingTagAPI)
+const { verifyToken } = require('./middleware/verifyToken')
+
+router.post('/following', verifyToken, tagController.followingTagAPI)
 
 module.exports = router
