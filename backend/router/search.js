@@ -6,8 +6,8 @@ const {
 } = require("../controller/search");
 const router = express.Router();
 
-router.get("/search/title/:searchTitle", findBucketByTitle);
-router.get("/search/content/:searchTitle", findBucketByContent);
-router.get("/search/tag/:searchTitle", findBucketByTag);
+router.get("/title/:searchTitle", findBucketByTitle);
+router.get("/content/:searchTitle", findBucketByContent);
+router.get("/tag/:searchTitle", findBucketByTag);
 
 module.exports = router;
