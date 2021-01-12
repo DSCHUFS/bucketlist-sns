@@ -21,6 +21,6 @@ app.use("/", function (req, res) {
   res.json({ status: "success", message: "hello", data: {} });
 });
 
-app.listen(3001, () => {
+app.listen(3000, () => {
   console.log("App is running on port 3000");
 });
