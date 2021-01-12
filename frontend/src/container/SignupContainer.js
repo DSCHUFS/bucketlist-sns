@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import axios from 'axios'
 import SignupTemplate from '../component/signup/SignupTemplate'
 import SignupForm from '../component/signup/SignupForm'
-import { setInput } from '../action/signup'
+import { setInput } from '../reducer/signup'
 
 class SignupContainer extends Component {
     onRegister = async () => {

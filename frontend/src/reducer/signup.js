@@ -1,5 +1,16 @@
-import { CHANGE_INPUT } from '../action/signup'
+// action
+export const CHANGE_INPUT = 'signup/CHANGE_INPUT'
 
+export const setInput = (input) => {
+    const id = input.id
+    const value = input.value
+    return {
+        type: CHANGE_INPUT,
+        payload: { id, value }
+    }
+}
+
+// reducer
 const initInputField = {
     email: '',
     pw: '',
@@ -12,7 +23,7 @@ const initInputField = {
     tags: ''
 }
 
-const inputField = (state = initInputField, action = {}) => {
+export const inputField = (state = initInputField, action = {}) => {
     switch(action.type) {
         case CHANGE_INPUT :
             return { ...state, [action.payload.id]: action.payload.value }
@@ -20,5 +31,3 @@ const inputField = (state = initInputField, action = {}) => {
             return state
     }
 }
-
-export default inputField
