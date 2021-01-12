@@ -5,16 +5,14 @@ const signupQuery = require('../queries/signup')
 
 const saltRounds = 10
 
-const findAndInsertTag = async (tag_name) => { // bucket에서 tag 등록시에도 사용할 수 있을 듯
-    let select_tag_id = await db.promise().query(signupQuery.FIND_TAG_ID, [tag_name]) // tag 검색
-    let tag_id = 0
-    if(select_tag_id[0][0]) { // 이미 존재하는 태그(해당 태그의 tag_id return)
-        tag_id = select_tag_id[0][0].tag_id
-    } else { // 존재하지 않는 태그(새로운 태그 등록 후 tag_id return)
-        let insert_tag_id = await db.promise().query(signupQuery.INSERT_TAG, [tag_name])
-        tag_id = insert_tag_id[0].insertId
+const insertTags = async (user_id, tags) => {
+    for (let i = 0; i < tags.length; i++) {
+        let result = await db.promise().query(signupQuery.FIND_TAG_NAME, [tags[i]])
+        if(result[0].length === 0) { // Tags table에 존재하지 않으면 insert
+            await db.promise().query(signupQuery.TAG_INSERT, [tags[i]])
+        }
+        await db.promise().query(signupQuery.FOLLOWING_TAG, [user_id, tags[i]])
     }
-    return tag_id
 }
 
 exports.signupAPI = async(req, res) => {
@@ -30,14 +28,9 @@ exports.signupAPI = async(req, res) => {
         const hash_pw = bcrypt.hashSync(password, saltRounds)
         const insert_user = await db.promise().query(signupQuery.USER_INSERT, [email, hash_pw, name, birth, death, profile_image, profile_detail])
         const user_id = insert_user[0].insertId
-
-        const tags = tag.split('/')
-        console.log(`tags : ${tags}`)
-        for (let i = 0; i < tags.length; i++) {
-            const tag_id = await findAndInsertTag(tags[i])
-            console.log(`tag_id : ${tag_id}`)
-            await db.promise().query(signupQuery.FOLLOWING_TAG, [user_id, tag_id])
-        }
+        
+        const tags = tag.split('/') // 여러 tag가 /로 구분되어 하나의 string으로 전달된다고 가정
+        await insertTags(user_id, tags) // 새로운 tag 삽입, following table에도 추가
 
         res.status(200).json({'msg' : `signup success`})
     } catch(e) {
