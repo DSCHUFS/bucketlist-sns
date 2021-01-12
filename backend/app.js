@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require('cors')
 const signupRouter = require("./router/signup");
 const signinRouter = require("./router/signin");
 const tagRouter = require("./router/tag");
@@ -7,6 +8,7 @@ const searchRouter = require("./router/search");
 
 const app = express();
 app.use(express.json());
+app.use(cors())
 
 app.use("/signup", signupRouter);
 app.use("/signin", signinRouter);
@@ -19,6 +21,6 @@ app.use("/", function (req, res) {
   res.json({ status: "success", message: "hello", data: {} });
 });
 
-app.listen(3000, () => {
+app.listen(3001, () => {
   console.log("App is running on port 3000");
 });
