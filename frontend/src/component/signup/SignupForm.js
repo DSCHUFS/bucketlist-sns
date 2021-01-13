@@ -5,7 +5,7 @@ import SignupInputForm from './SignupInputForm'
 
 class SignupForm extends Component {
     render() {
-        const { onChange, onRegister } = this.props
+        const { onChange, onRegister, checkValid } = this.props
         return ( 
         <Card>
         <SignupInputForm 
@@ -14,13 +14,15 @@ class SignupForm extends Component {
             width = '300'
             type = 'text'
             onChange = { onChange }
+            checkValid = { checkValid }
         />
         <SignupInputForm 
             content = 'Password'
-            id = 'pw'
+            id = 'password'
             width = '300'
             type = 'password'
             onChange = { onChange }
+            checkValid = { checkValid }
         />
         <SignupInputForm 
             content = 'Password Check'
@@ -28,6 +30,7 @@ class SignupForm extends Component {
             width = '300'
             type = 'password'
             onChange = { onChange }
+            checkValid = { checkValid }
         />
         <SignupInputForm 
             content = 'Name'
@@ -35,6 +38,7 @@ class SignupForm extends Component {
             width = '300'
             type = 'text'
             onChange = { onChange }
+            checkValid = { checkValid }
         />
         <SignupInputForm 
             content = 'Birth'
@@ -42,6 +46,7 @@ class SignupForm extends Component {
             width = '300'
             type = 'date'
             onChange = { onChange }
+            checkValid = { checkValid }
         />
         <SignupInputForm 
             content = 'Death'
@@ -49,6 +54,7 @@ class SignupForm extends Component {
             width = '300'
             type = 'date'
             onChange = { onChange }
+            checkValid = { checkValid }
         />
         <SignupInputForm 
             content = 'Profile image'
@@ -56,20 +62,23 @@ class SignupForm extends Component {
             width = '300'
             type = 'file'
             onChange = { onChange }
+            checkValid = { checkValid }
         />
         <SignupInputForm 
             content = '소개글'
-            id = 'profile_text'
+            id = 'profile_detail'
             width = '500'
             type = 'text'
             onChange = { onChange }
+            checkValid = { checkValid }
         />
         <SignupInputForm 
             content = 'Tags'
-            id = 'tags'
+            id = 'tag'
             width = '500'
             type = 'text'
             onChange = { onChange }
+            checkValid = { checkValid }
         />
 
         <Button rounded onClick={ onRegister }> 

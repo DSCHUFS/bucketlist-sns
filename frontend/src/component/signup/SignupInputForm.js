@@ -3,6 +3,11 @@ import { TextField } from 'ui-neumorphism'
 import 'ui-neumorphism/dist/index.css'
 
 class SignupInputForm extends Component {
+    onChange = async(e) => {
+        const { checkValid, onChange} = this.props
+        await onChange(e)
+        await checkValid(e.id)
+    }
     render() {
         const { content, width, type, id } = this.props
         return (
@@ -14,7 +19,7 @@ class SignupInputForm extends Component {
                     type={type}
                     style={{display: 'inline-block'}}
                     rounded
-                    onChange={this.props.onChange.bind(this)}>
+                    onChange={this.onChange.bind(this)}>
                 </TextField>
             </div>
         )
