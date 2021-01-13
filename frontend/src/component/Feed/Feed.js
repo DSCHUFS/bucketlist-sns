@@ -1,25 +1,21 @@
 import React from 'react';
-import { feeds } from '../../Store/Feed';
+import { Card } from 'ui-neumorphism'
+import ButtonFeedDelete from '../buttonfeeddelete/ButtonFeedDelete';
+import ButtonFeedLike from '../buttonfeedlike/BuffonFeedLike';
 import './Feed.css';
 
-const Feed = (props) => {
+const Feed = (props, {onClickLike}) => {
     return(
-        <div className = 'feed-box tc bg-light-pink br4 pa3 ma4 bw5 shadow-5'>
-            <div>
-                date location
-                <button>like</button>
-                <button>progress</button>
-            </div>
-            <div>
+        <Card className = 'feedcard tl ma2'>
+            <div className = "feedheader">
                 <h1>{props.title}</h1>
-                <p>{props.content}</p>
+                <p className = "tr"> D-DAY {props.d_day} And Like {props.like}</p>
             </div>
-            <div>
-                <button>del</button>
-            </div>
-
-        </div>
+            <div className = "contentbox">{props.content}</div>
+        </Card>
     )
 }
 
 export default Feed;
+
+

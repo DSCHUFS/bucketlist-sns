@@ -1,14 +1,15 @@
 import React from 'react';
+import './Scroll.css';
 
 
 const Scroll = (props) => {
 
     return(
-        <div style = {{
+        <div className = "scroll_box"
+        style = {{
             overflowY: 'scroll',
-            border : '3px solid blue',
+            width : '550px', 
             height : '800px',
-            background : 'green',
         }}>
             {props.children}
         </div>

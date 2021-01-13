@@ -1,5 +1,27 @@
 .feed-box{
-    margin: 0px;
+    margin: 20px;
     height: auto;
-    width: 400px;
+    width: auto;
+}
+
+.feed-box h1{
+    margin-top: 20px;
+    text-align: left;
+}
+
+.feed-box p{
+    text-align: left;
+    left: 20px;
+}
+
+.tr{
+    font-size: 15px;
+    margin-right: 20px;
+    margin-top: -20px;
+}
+
+.contentbox{
+    margin: 10px;
+    padding: 10px;
+    word-break:break-all;
 }
