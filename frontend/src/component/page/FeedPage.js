@@ -63,13 +63,23 @@ class FeedPage extends Component {
     }
 
     onDelete =(num) => {
-
+        this.setState(
+            {del_id : num}
+        )
+        console.log(num)
         if ( window.confirm("너의 버킷을 삭제할꺼야?")){
-            this.setState(
-                {del_id : num}
-            )
-            console.log(num)
-
+            var newfeeds = Array.from(feeds)
+            var i = 0
+            while( i < newfeeds.length){
+                if (newfeeds[i].id === num){
+                    newfeeds.splice(i, 1);
+                    break;
+                }
+            }
+            console.log(newfeeds)
+            this.setState({
+                feeds : newfeeds
+            })
         }else{
             alert("잘 생각했어!");
         }
