@@ -21,7 +21,6 @@ export const setInput = (input) => {
 }
 
 export const checkValid = (result) => {
-    console.log(`checkValid action result : ${JSON.stringify(result)}`)
     return {
         type: CHECK_VALIDATION,
         payload: result
@@ -48,7 +47,7 @@ const validInput = {
     name: false,
     birth: false,
     death: false,
-    profile_image: false,
+    profile_image: true,
     profile_detail: false,
     tag: false
 }
