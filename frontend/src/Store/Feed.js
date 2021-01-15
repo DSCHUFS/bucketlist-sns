@@ -1,43 +1,39 @@
 export const feeds = [
-  {
-    id: 0,
-    title : 'My Dream',
-    content: 'I want to work at Codddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddmpany',
-    like: 0,
-    dday: 0,
-    progress : false
-    
-  },
-  {
-    id: 1,
-    title : 'trip to Europ',
-    content: 'I want to trip to Swiss',
-    like: 0,
-    dday: 0,
-    progress : false
-  },
-  {
-    id: 2,
-    title : 'Buy My House ',
-    content: 'I want to Buy House with my effort',
-    like: 0,
-    dday: 0,
-    progress : false
-  },
-  {
-    id: 3,
-    title : '삼성알고리즘 대회 결승가기',
-    content: '삼성 알고리즘 대회 결승 가보기',
-    like: 0,
-    dday: 0,
-    progress : false
-  },
-  {
-    id: 4,
-    title : 'My Dream',
-    content: 'I want to work at Company',
-    like: 0,
-    dday: 0,
-    progress : false
-  },
-];
+    {
+      id: 0,
+      title : 'My Dream',
+      content: 'I want to work at Codddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddmpany',
+      like: 0,
+      d_day: 0,
+      
+    },
+    {
+      id: 1,
+      title : '여행가기',
+      content: 'ㅈㄱㄴ',
+      like: 0,
+      d_day: 0,
+    },
+    {
+      id: 2,
+      title : 'Buy My House ',
+      content: 'I want to Buy House with my effort',
+      like: 0,
+      d_day: 0,
+    },
+    {
+      id: 3,
+      title : '졸업하기',
+      content: '졸업하고 바로 취업했으면 좋겠다.',
+      like: 0,
+      d_day: 0,
+    },
+    {
+      id: 4,
+      title : '알고리즘 대회 입상하기',
+      content: '한번이라도 입상해보자!',
+      like: 0,
+      d_day: 0,
+    },
+  ];
+  
