@@ -48,30 +48,29 @@ CREATE TABLE `PushButtons` (
 )
 
 CREATE TABLE `Tags` (
-  `tag_id` int(11) NOT NULL AUTO_INCREMENT,
   `tag_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`tag_id`),
+  PRIMARY KEY (`tag_name`),
   UNIQUE KEY `Tags_UN` (`tag_name`)
 )
 
 CREATE TABLE `BucketTags` (
   `bucket_tag_id` int(11) NOT NULL AUTO_INCREMENT,
   `bucket_id` int(11) NOT NULL,
-  `tag_id` int(11) NOT NULL,
+  `tag_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`bucket_tag_id`),
   KEY `BucketTags_FK` (`bucket_id`),
-  KEY `BucketTags_FK_1` (`tag_id`),
+  KEY `BucketTags_FK_1` (`tag_name`),
   CONSTRAINT `BucketTags_FK` FOREIGN KEY (`bucket_id`) REFERENCES `Buckets` (`bucket_id`),
-  CONSTRAINT `BucketTags_FK_1` FOREIGN KEY (`tag_id`) REFERENCES `Tags` (`tag_id`)
+  CONSTRAINT `BucketTags_FK_1` FOREIGN KEY (`tag_name`) REFERENCES `Tags` (`tag_name`)
 )
 
 CREATE TABLE `FollowingTags` (
   `following_tag_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
-  `tag_id` int(11) NOT NULL,
+  `tag_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`following_tag_id`),
   KEY `FollowingTags_FK` (`user_id`),
-  KEY `FollowingTags_FK_1` (`tag_id`),
+  KEY `FollowingTags_FK_1` (`tag_name`),
   CONSTRAINT `FollowingTags_FK` FOREIGN KEY (`user_id`) REFERENCES `Users` (`user_id`),
-  CONSTRAINT `FollowingTags_FK_1` FOREIGN KEY (`tag_id`) REFERENCES `Tags` (`tag_id`)
+  CONSTRAINT `FollowingTags_FK_1` FOREIGN KEY (`tag_name`) REFERENCES `Tags` (`tag_name`)
 )
