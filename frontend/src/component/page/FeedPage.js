@@ -1,90 +1,100 @@
-import React from 'react';
-import FeedList from '../feedList/FeedList';
-import InputBox from '../inputBox/InputBox';
-import Scroll from '../scroll/Scroll';
+import React , {Component} from 'react';
+import 'ui-neumorphism/dist/index.css';
 import { feeds } from '../../store/Feed';
 
+//component
+
+import BucketGetBox from '../bucketgetbox/BucketGetBox';
+import FeedList from '../feedlist/FeedList';
 
 
-class FeedPage extends React.Component {
-    constructor(){
-           super()
-           this.state = {
-               feeds : feeds,
-               title : '',
-               bucket_content : '',
-               like: 0,
-               d_day: 0,
+//container
 
-           }
-       }
-   
-   
+//import Scroll from '../../container/scroll/Scroll';
+
+class FeedPage extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            feeds : feeds,
+            selected_content_id : 0,
+            ntitle : '',
+            nbucket : '',
+            like : 0,
+            dday : '',
+            del_id : -1
+        }
+    }
+
     onInputChange_title = (event) => {
         console.log("title")
-        this.setState({ title: event.target.value })
+        this.setState({ ntitle: event.target.value })
     }
-
     onInputChange_content = (event) => {
         console.log("content")
-        this.setState({ bucket_content: event.target.value })
+        this.setState({ nbucket: event.target.value })
     }
-
     onInputChange_d_day = (event) =>{
-        this.setState({ d_day : event.target.value })
+        console.log("dday")
+        this.setState({ dday : event.target.value })
     }
-
     onSubmitFeed = (event) => {
-        if ( this.state.title.length === 0){
-            alert('put title');
-        }else if ( this.state.bucket_content.length === 0 ){
-            alert('put contents')
+        if ( this.state.ntitle.length === 0){
+            alert('제목을 입력해주세요!');
+        }else if ( this.state.nbucket.length === 0 ){
+            alert('내용을 입력해주세요!')
         }else{
-            this.state.feeds.push(
+            this.setState(
                 {
-                    id : feeds.length,
-                    title : this.state.title,
-                    content : this.state.bucket_content,
-                    d_day : this.state.d_day,
-                    like : 0
+                    feeds : feeds.push(
+                        {
+                            id : feeds.length,
+                            title : this.state.ntitle,
+                            content : this.state.nbucket,
+                            d_day : this.state.dday,
+                            like : 0,
+                        }
+                    )
                 }
             )
         }
         console.log(feeds)
+
     }
 
-    onClickLike = (event) => {
-        console.log(this.state.feeds)
-    }
-    
-    onClickDelete = (evet) => {
-        console.log("del")
+    onDelete =(num) => {
+
+        if ( window.confirm("너의 버킷을 삭제할꺼야?")){
+            this.setState(
+                {del_id : num}
+            )
+            console.log(num)
+
+        }else{
+            alert("잘 생각했어!");
+        }
     }
 
 
     render(){
-        return(
-            <div className = "tc">
-            <InputBox 
-                onInputChange_title = {this.onInputChange_title}
-                onInputChange_content = {this.onInputChange_content}
-                onInputChange_d_day = {this.onInputChange_d_day}
-                onSubmitFeed = {this.onSubmitFeed}
-            />
-            <Scroll>
-                <FeedList 
-                     feeds = {this.state.feeds}
-                     onClickLike = {this.onClickLike}
-                     onClickDelete = {this.onClickDelete}
-                     />
-            </Scroll>
-        </div>
-        )
-    }
-   }
 
+        return(
+            <div>
+                <BucketGetBox 
+                    onInputChange_title = {this.onInputChange_title}
+                    onInputChange_content = {this.onInputChange_content}
+                    onInputChange_d_day = {this.onInputChange_d_day}
+                    onSubmitFeed = {this.onSubmitFeed}
+                />
+                <FeedList 
+                    feeds = {feeds}
+                    onDelete = {this.onDelete}
+                    ></FeedList>       
+            </div>
+
+        )
+    };
+
+}
 
 export default FeedPage
- 
-
-
