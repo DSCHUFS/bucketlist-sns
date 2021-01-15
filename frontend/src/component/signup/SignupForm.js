@@ -5,22 +5,26 @@ import SignupInputForm from './SignupInputForm'
 
 class SignupForm extends Component {
     render() {
-        const { onChange, onRegister } = this.props
+        const { onChange, onRegister, checkValid, validation } = this.props
         return ( 
-        <Card>
+        <div className='formContainer'>
         <SignupInputForm 
             content = 'Email'
             id = 'email'
             width = '300'
             type = 'text'
             onChange = { onChange }
+            checkValid = { checkValid }
+            validation = { validation.email }
         />
         <SignupInputForm 
             content = 'Password'
-            id = 'pw'
+            id = 'password'
             width = '300'
             type = 'password'
             onChange = { onChange }
+            checkValid = { checkValid }
+            validation = { validation.password }
         />
         <SignupInputForm 
             content = 'Password Check'
@@ -28,6 +32,8 @@ class SignupForm extends Component {
             width = '300'
             type = 'password'
             onChange = { onChange }
+            checkValid = { checkValid }
+            validation = { validation.pwCheck }
         />
         <SignupInputForm 
             content = 'Name'
@@ -35,6 +41,8 @@ class SignupForm extends Component {
             width = '300'
             type = 'text'
             onChange = { onChange }
+            checkValid = { checkValid }
+            validation = { validation.name }
         />
         <SignupInputForm 
             content = 'Birth'
@@ -42,6 +50,8 @@ class SignupForm extends Component {
             width = '300'
             type = 'date'
             onChange = { onChange }
+            checkValid = { checkValid }
+            validation = { validation.birth }
         />
         <SignupInputForm 
             content = 'Death'
@@ -49,6 +59,8 @@ class SignupForm extends Component {
             width = '300'
             type = 'date'
             onChange = { onChange }
+            checkValid = { checkValid }
+            validation = { validation.death }
         />
         <SignupInputForm 
             content = 'Profile image'
@@ -56,26 +68,32 @@ class SignupForm extends Component {
             width = '300'
             type = 'file'
             onChange = { onChange }
+            checkValid = { checkValid }
+            validation = { validation.profile_image }
         />
         <SignupInputForm 
             content = '소개글'
-            id = 'profile_text'
+            id = 'profile_detail'
             width = '500'
             type = 'text'
             onChange = { onChange }
+            checkValid = { checkValid }
+            validation = { validation.profile_detail }
         />
         <SignupInputForm 
             content = 'Tags'
-            id = 'tags'
+            id = 'tag'
             width = '500'
             type = 'text'
             onChange = { onChange }
+            checkValid = { checkValid }
+            validation = { validation.tag }
         />
 
         <Button rounded onClick={ onRegister }> 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;signup&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </Button>
-        </Card>
+        </div>
         )
     }
 }

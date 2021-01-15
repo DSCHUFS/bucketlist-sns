@@ -5,12 +5,8 @@ import 'ui-neumorphism/dist/index.css'
 class SignupTemplate extends Component {
     render() {
         return (
-            <div>
-                <Card height='55' style={{padding: '10px'}}>
-                    <H5 style={{fontWeight:'bold'}}>
-                    BUCKETLIST SIGNUP
-                    </H5>
-                </Card>
+            <div className='header'>
+                    <H5> BUCKETLIST SIGNUP </H5>
             </div>
         )
     }
