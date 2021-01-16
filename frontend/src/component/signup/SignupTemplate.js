@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, H5 } from 'ui-neumorphism'
+import { H5 } from 'ui-neumorphism'
 import 'ui-neumorphism/dist/index.css'
 
 class SignupTemplate extends Component {

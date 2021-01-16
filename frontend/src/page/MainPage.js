@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { withRouter } from 'react-router-dom';
 import styled from "styled-components";
 import LeftSideBar from "../component/sidebar/LeftSideBar";
+
 
 const MainPageRoot = styled.div`
   display: flex;
@@ -30,9 +32,10 @@ const RightSideBar = styled.div`
 const FeedDiv = styled.div`
   width: 100%;
 `;
-
 class MainPage extends Component {
   render() {
+    const location = this.props.location
+    const token = (location.state) ? location.state.token : ''
     return (
       <>
         <TopNav>상단바</TopNav>
@@ -46,4 +49,4 @@ class MainPage extends Component {
   }
 }
 
-export default MainPage;
+export default withRouter(MainPage);

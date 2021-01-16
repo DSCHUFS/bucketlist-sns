@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Card, Button } from 'ui-neumorphism'
+import { Button } from 'ui-neumorphism'
 import 'ui-neumorphism/dist/index.css'
 import SignupInputForm from './SignupInputForm' 
+import { Link } from 'react-router-dom'
 
 class SignupForm extends Component {
     render() {
@@ -16,6 +17,7 @@ class SignupForm extends Component {
             onChange = { onChange }
             checkValid = { checkValid }
             validation = { validation.email }
+            placeholder = 'foo@example.com'
         />
         <SignupInputForm 
             content = 'Password'
@@ -25,6 +27,7 @@ class SignupForm extends Component {
             onChange = { onChange }
             checkValid = { checkValid }
             validation = { validation.password }
+            placeholder = 'password'
         />
         <SignupInputForm 
             content = 'Password Check'
@@ -34,6 +37,7 @@ class SignupForm extends Component {
             onChange = { onChange }
             checkValid = { checkValid }
             validation = { validation.pwCheck }
+            placeholder = 'password 확인'
         />
         <SignupInputForm 
             content = 'Name'
@@ -43,6 +47,7 @@ class SignupForm extends Component {
             onChange = { onChange }
             checkValid = { checkValid }
             validation = { validation.name }
+            placeholder = '50자이내로 입력해주세요'
         />
         <SignupInputForm 
             content = 'Birth'
@@ -52,6 +57,7 @@ class SignupForm extends Component {
             onChange = { onChange }
             checkValid = { checkValid }
             validation = { validation.birth }
+            placeholder = '0000-00-00'
         />
         <SignupInputForm 
             content = 'Death'
@@ -61,6 +67,7 @@ class SignupForm extends Component {
             onChange = { onChange }
             checkValid = { checkValid }
             validation = { validation.death }
+            placeholder = '0000-00-00'
         />
         <SignupInputForm 
             content = 'Profile image'
@@ -70,6 +77,7 @@ class SignupForm extends Component {
             onChange = { onChange }
             checkValid = { checkValid }
             validation = { validation.profile_image }
+            placeholder = '프로필 사진 없음'
         />
         <SignupInputForm 
             content = '소개글'
@@ -79,6 +87,7 @@ class SignupForm extends Component {
             onChange = { onChange }
             checkValid = { checkValid }
             validation = { validation.profile_detail }
+            placeholder = '간단한 자기소개를 200자 이내로 적어주세요'
         />
         <SignupInputForm 
             content = 'Tags'
@@ -88,6 +97,7 @@ class SignupForm extends Component {
             onChange = { onChange }
             checkValid = { checkValid }
             validation = { validation.tag }
+            placeholder = 'tag1/tag2/tag3'
         />
 
         <Button rounded onClick={ onRegister }> 
