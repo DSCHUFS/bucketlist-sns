@@ -13,10 +13,27 @@
 .header H5 {
     flex-grow: 1;
     font-weight: bold;
+    align-items: center;
+    text-align: center;
 }
 .formContainer {
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column; 
-    align-items: center;
+    display: grid;
+    justify-items: center;
+}
+.inputform {
+    display: grid;
+    grid-template-columns: 500px 200px;
+    justify-items: center;
+    text-align: center; 
+}
+.input {
+    display: grid;
+}
+.textContent {
+    display: grid;
+    text-align: center;
+    place-items: center;
+    font-size: small;
+    font-weight: bold;
+    color: rgb(60, 0, 129);
 }

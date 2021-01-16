@@ -9,7 +9,7 @@ class SignupInputForm extends Component {
         await checkValid(e.id)
     }
     render() {
-        const { content, width, type, id, validation } = this.props
+        const { content, width, type, id, validation, placeholder } = this.props
         let text = null
         let text_content = ''
         if(!validation) {
@@ -26,21 +26,23 @@ class SignupInputForm extends Component {
                 default :
                     text_content = '입력해 주세요'
             }
-            text = <span className='text'>{text_content}</span>
+        } else {
+            text_content = '✔'
         }
+        text = <span className='textContent'>{text_content}</span>
         
         return (
             <div className='inputform'>
-                <div>
+                <div className='input'>
                     <h4> { content } </h4>
                     <TextField
                         id={id}
                         width={width}
                         type={type}
-                        // style={{display: 'inline-block'}}
                         rounded
-                        onChange={this.onChange.bind(this)}>
-                    </TextField>
+                        onChange={this.onChange.bind(this)}
+                        placeholder = { placeholder } 
+                        />
                 </div>
                 { text }
             </div>

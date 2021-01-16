@@ -54,8 +54,8 @@ class SignupContainer extends Component {
     }
 
     onRegister = async () => {
+        const { validation, userInfo, history } = this.props
         console.log('signup button click')
-        const { validation, userInfo } = this.props
         const isInputTrue = (curInput) => curInput === true
 
         if(Object.values(validation).every(isInputTrue)) {
@@ -65,19 +65,27 @@ class SignupContainer extends Component {
             axios.post('http://localhost:3001/signup', user_info)
                 .then(function (res) {
                     console.log(`res.data : ${JSON.stringify(res.data)}`)
-                    console.log(`res.data.msg : ${JSON.stringify(res.data.msg)}`)
                     console.log(`res.status : ${JSON.stringify(res.status)}`)
                     if(res.status === 200) {
                         console.log(`signup success`)
+                        
+                        const token = res.data.token
+                        history.push({
+                            pathname: '/',
+                            state: {token: token}
+                        })
                     }
                 })
                 .catch(function (err) {
                     console.log(`signup post err : ${err}`)
                     const res = err.response
-                    if(res.data.msg === 'duplicate email' && res.status === 400) {
+                    if(res && res.status === 400) {
                         console.log(`duplicate email`)
+                        alert(`이미 가입된 이메일 입니다. 새로운 이메일으로 가입해주세요`)
                     } 
                 })
+        } else {
+            alert(`입력한 정보가 정확한지 확인해주세요!`)
         }
     }
 

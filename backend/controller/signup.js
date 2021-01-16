@@ -1,6 +1,8 @@
 const express = require('express')
 const bcrypt = require('bcrypt')
 const signupQuery = require('../queries/signup')
+const jwt = require('jsonwebtoken');
+const secretKey = require('../config/jwt').secretKey
 
 const saltRounds = 10
 
@@ -33,8 +35,9 @@ exports.signupAPI = async(req, res) => {
             
             const tags = tag.split('/') // 여러 tag가 /로 구분되어 하나의 string으로 전달된다고 가정
             await insertTags(user_id, tags) // 새로운 tag 삽입, following table에도 추가
+            let token = jwt.sign({ id: user_id }, secretKey, { expiresIn: '7d'}); // jwt 발급
             console.log(`${email} signup success`)
-            res.status(200).json({'msg' : `signup success`})
+            res.status(200).json({'msg' : `signup success`, 'token' : token})
             await conn.commit()
         }
     } catch(e) {
