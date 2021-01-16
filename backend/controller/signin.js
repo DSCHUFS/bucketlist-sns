@@ -23,7 +23,7 @@ exports.signinAPI = async(req, res) => {
         // db의 pw와 입력받은 pw가 동일한지 비교
         bcrypt.compare(password, user_pw, function(err, result) {
             if(result) {
-                let token = jwt.sign({ id: user_id }, secretKey, { expiresIn: '1d'}); // jwt 발급
+                let token = jwt.sign({ id: user_id }, secretKey, { expiresIn: '7d'}); // jwt 발급
                 res.status(200).json({'msg' : `signin success`, 'token' : token})
                 
             } else {
