@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { Button, Card } from "ui-neumorphism";
-import userImg from "../../img/user.svg";
-import heartImg from "../../img/heart.svg";
-import letterImg from "../../img/letter.svg";
-import exportImg from "../../img/export.svg";
+import { Card } from "ui-neumorphism";
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+
+import FollowingTagCard from "./FollowingTagCard";
 
 const RightSideBarRoot = styled.div`
   display: flex;
@@ -23,19 +23,14 @@ const CardStyle = {
   height: "100%",
 };
 
-const ButtonStyle = {
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "flex-start",
-  width: "200px",
-  margin: "20px 10px",
-};
-
 class RightSideBar extends React.Component {
   render() {
     return (
       <RightSideBarRoot>
-        <Card inset style={CardStyle}></Card>
+        <Card inset style={CardStyle}>
+        <FollowingTagCard/>
+        <Calendar/>
+        </Card>
       </RightSideBarRoot>
     );
   }
