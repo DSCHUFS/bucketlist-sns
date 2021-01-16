@@ -33,6 +33,7 @@ class SignupInputForm extends Component {
         
         return (
             <div className='inputform'>
+                <div></div>
                 <div className='input'>
                     <h4> { content } </h4>
                     <TextField
