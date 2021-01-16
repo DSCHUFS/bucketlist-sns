@@ -12,10 +12,16 @@ const LeftSideBarRoot = styled.div`
   justify-content: flex-start;
   align-items: center;
   left: 0;
-  padding-top: 10px;
+  padding: 10px;
   width: 400px;
   background-color: #e4ebf5;
 `;
+
+const CardStyle = {
+  padding: "30px 10px",
+  width: "100%",
+  height: "100%",
+};
 
 const ButtonStyle = {
   display: "flex",
@@ -29,8 +35,8 @@ class LeftSideBar extends React.Component {
   render() {
     return (
       <LeftSideBarRoot>
-        <Card style={{ padding: "30px 10px" }}>
-          <Button style={ButtonStyle}>
+        <Card inset style={CardStyle}>
+          <Button text={false} style={ButtonStyle}>
             <img
               src={userImg}
               width="20px"
@@ -39,7 +45,7 @@ class LeftSideBar extends React.Component {
             />
             프로필
           </Button>
-          <Button style={ButtonStyle}>
+          <Button text style={ButtonStyle}>
             <img
               src={userImg}
               width="20px"
@@ -48,7 +54,7 @@ class LeftSideBar extends React.Component {
             />
             나의 버킷
           </Button>
-          <Button style={ButtonStyle}>
+          <Button text style={ButtonStyle}>
             <img
               src={heartImg}
               width="20px"
@@ -57,7 +63,7 @@ class LeftSideBar extends React.Component {
             />
             내가 좋아요 누른 버킷
           </Button>
-          <Button style={ButtonStyle}>
+          <Button text style={ButtonStyle}>
             <img
               src={letterImg}
               width="20px"
@@ -66,7 +72,7 @@ class LeftSideBar extends React.Component {
             />
             개발자 Contact
           </Button>
-          <Button style={ButtonStyle}>
+          <Button text style={ButtonStyle}>
             <img
               src={exportImg}
               width="20px"
@@ -75,7 +81,7 @@ class LeftSideBar extends React.Component {
             />
             Export 버킷
           </Button>
-          <Button style={ButtonStyle}>
+          <Button text style={ButtonStyle}>
             <img
               src={userImg}
               width="20px"
