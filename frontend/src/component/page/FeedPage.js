@@ -1,6 +1,6 @@
 import React , {Component} from 'react';
 import 'ui-neumorphism/dist/index.css';
-import { feeds } from '../../store/Feed';
+import { feeds } from '../../Store/Feed';
 
 //component
 
@@ -10,7 +10,26 @@ import FeedList from '../feedlist/FeedList';
 
 //container
 
+//reducer
+import { connect } from 'react-redux'
+import { setContent } from '../../action'
+
 //import Scroll from '../../container/scroll/Scroll';
+
+
+
+
+const mapStateToProps = state =>{
+    return {
+        nbucket : state.nbucket
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onInputChange_content: (event) => dispatch ( setContent(event.target.value))
+
+    }
+}
 
 class FeedPage extends Component {
     constructor(props){
@@ -19,7 +38,7 @@ class FeedPage extends Component {
             feeds : feeds,
             selected_content_id : 0,
             ntitle : '',
-            nbucket : '',
+            //nbucket : '',
             like : 0,
             dday : '',
             del_id : -1
@@ -30,10 +49,12 @@ class FeedPage extends Component {
         console.log("title")
         this.setState({ ntitle: event.target.value })
     }
+    /*
     onInputChange_content = (event) => {
         console.log("content")
         this.setState({ nbucket: event.target.value })
     }
+    */
     onInputChange_d_day = (event) =>{
         console.log("dday")
         this.setState({ dday : event.target.value })
@@ -41,7 +62,7 @@ class FeedPage extends Component {
     onSubmitFeed = (event) => {
         if ( this.state.ntitle.length === 0){
             alert('제목을 입력해주세요!');
-        }else if ( this.state.nbucket.length === 0 ){
+        }else if ( this.props.nbucket.length === 0 ){
             alert('내용을 입력해주세요!')
         }else{
             this.setState(
@@ -77,12 +98,13 @@ class FeedPage extends Component {
 
 
     render(){
+        const { nbucket , onInputChange_content} = this.props
 
         return(
             <div>
                 <BucketGetBox 
                     onInputChange_title = {this.onInputChange_title}
-                    onInputChange_content = {this.onInputChange_content}
+                    onInputChange_content = {onInputChange_content}
                     onInputChange_d_day = {this.onInputChange_d_day}
                     onSubmitFeed = {this.onSubmitFeed}
                 />
@@ -97,4 +119,4 @@ class FeedPage extends Component {
 
 }
 
-export default FeedPage
+export default connect(mapStateToProps, mapDispatchToProps)(FeedPage);

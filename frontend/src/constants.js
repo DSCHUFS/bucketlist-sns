@@ -1,0 +1,1 @@
+export const CHAGNE_CONTENT = 'CHAGNE_CONTENT'

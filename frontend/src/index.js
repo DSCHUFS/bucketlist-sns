@@ -1,13 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
 import './index.css';
 import FeedPage from './component/page/FeedPage';
 import reportWebVitals from './reportWebVitals';
 import 'tachyons';
 import 'ui-neumorphism/dist/index.css';
 
+
+import { changeContent } from './reducer'
+
+
+const store = createStore(changeContent)
+
 ReactDOM.render(
-  <FeedPage />
+  <Provider store = {store}>
+      <FeedPage />
+  </Provider>
+
   ,
   document.getElementById('root')
 );

@@ -6,6 +6,7 @@ const initalState = {
 
 
 export const changeContent = (state=initalState, action = {})=>{
+    console.log(action.type)
     switch(action.type){
         case CHAGNE_CONTENT:
             return Object.assign({}, state, { nbucket : action.payload })

@@ -1,6 +1,6 @@
 import React ,{ Component } from 'react';
 import { Card  } from 'ui-neumorphism'
-import 'ui-neumorphism/dist/index.css'
+import 'ui-neumorphism/dist/index.css';
 import '../../css/BucketGetBox.css'
 
 //component

@@ -1,6 +1,6 @@
 import React ,{ Component } from 'react';
 import { Card } from 'ui-neumorphism'
-import 'ui-neumorphism/dist/index.css'
+import 'ui-neumorphism/dist/index.css';
 import '../../css/FeedCard.css'
 
 
@@ -34,7 +34,6 @@ class FeedCard extends Component{
                 <p> like : {this.state.like} D-day : {this.props.d_day} </p>
                 <div className = "contentbox">
                     {this.props.content}<br></br>
-                    Feed's id is {this.props.id}
                 </div>
                 <ButtonFeedLike onLike = {this.onLike}/>
                 <ButtonFeedDelete 
