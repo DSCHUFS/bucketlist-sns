@@ -1,9 +1,11 @@
-import { inputField, validInputCheck } from './signup'
+import { signupInputField, validInputCheck } from './signup'
+import { signinInputField } from './signin'
 import { combineReducers } from 'redux'
 
 const rootReducers = combineReducers({
-    signup: inputField,
-    validation: validInputCheck
+    signupInputField,
+    validInputCheck,
+    signinInputField
 })
 
 export default rootReducers

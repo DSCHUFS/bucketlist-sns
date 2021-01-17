@@ -16,13 +16,6 @@
     align-items: center;
     text-align: center;
 }
-.formContainer {
-    display: grid;
-}
-.inputform {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-}
 .input {
     display: grid;
     justify-items: center;

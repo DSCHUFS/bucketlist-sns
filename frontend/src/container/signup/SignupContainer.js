@@ -93,8 +93,8 @@ class SignupContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    userInfo: state.signup,
-    validation : state.validation
+    userInfo: state.signupInputField,
+    validation : state.validInputCheck
 })
 
 const mapDispatchToProps = (dispatch) => ({

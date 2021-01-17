@@ -7,7 +7,7 @@ class SigninForm extends Component {
     render() {
         const { onChange, onRegister } = this.props
         return ( 
-            <div className='formContainer'>
+            <div className='signinformContainer'>
             <SigninInputForm 
                 content = 'Email'
                 id = 'email'
