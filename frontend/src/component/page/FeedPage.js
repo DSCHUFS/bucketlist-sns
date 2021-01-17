@@ -16,7 +16,8 @@ import { setContent } from '../../action'
 
 //import Scroll from '../../container/scroll/Scroll';
 
-
+//css
+import '../../css/FeedPage.css'
 
 
 const mapStateToProps = state =>{
@@ -71,7 +72,7 @@ class FeedPage extends Component {
                         {
                             id : feeds.length,
                             title : this.state.ntitle,
-                            content : this.state.nbucket,
+                            content : this.props.nbucket,
                             d_day : this.state.dday,
                             like : 0,
                         }
@@ -101,8 +102,9 @@ class FeedPage extends Component {
         const { nbucket , onInputChange_content} = this.props
 
         return(
-            <div>
+            <div className = "feeds">
                 <BucketGetBox 
+                    className = "bucketgetbox"
                     onInputChange_title = {this.onInputChange_title}
                     onInputChange_content = {onInputChange_content}
                     onInputChange_d_day = {this.onInputChange_d_day}

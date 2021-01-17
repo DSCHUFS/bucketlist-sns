@@ -14,6 +14,7 @@ class BucketGetBox extends Component{
             <Card>
                 <h1>What's your Bucket</h1>
                 <div>
+
                     <input 
                     className = "title"
                     type = "text"
@@ -34,6 +35,7 @@ class BucketGetBox extends Component{
                     placeholder = "내용이 뭐니?"
                     onChange = {this.props.onInputChange_content}
                     />
+
                     <div>
                         <ButtonFeedCreate 
                             onSubmitFeed = {this.props.onSubmitFeed}

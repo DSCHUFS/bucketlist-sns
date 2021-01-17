@@ -1,5 +1,34 @@
+.feedbox{
+    margin : 20px;
+    margin-right: 30px;
+
+    width : 95%;
+}
+
+.feedbox h1{
+    margin-left: 20px;
+    margin-top : 20px;
+    font-size: 50px;
+}
+
+.likeday{
+    float: left;
+    margin-bottom: 30px;
+
+}
 .contentbox{
+    float: left;
+    font-size: 30px;
+    width : 90%;
     margin: 10px;
     padding: 10px;
     word-break:break-all;
 }
+
+.buttons{
+    position: relative;
+    right : 5%
+}
+
+
+

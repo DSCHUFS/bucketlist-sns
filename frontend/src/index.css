@@ -1,5 +1,9 @@
 body {
+  display: flexbox;
+  align-content: center;
   background-color:  #E4EBF5;
+  width : 800px;
+  
 }
 
 code {

@@ -5,6 +5,7 @@ export const feeds = [
       content: 'I want to work at Codddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddmpany',
       like: 0,
       d_day: 0,
+      img : '',
       
     },
     {
@@ -13,6 +14,7 @@ export const feeds = [
       content: 'ㅈㄱㄴ',
       like: 0,
       d_day: 0,
+      img : '',
     },
     {
       id: 2,
@@ -20,6 +22,7 @@ export const feeds = [
       content: 'I want to Buy House with my effort',
       like: 0,
       d_day: 0,
+      img : '',
     },
     {
       id: 3,
@@ -27,6 +30,7 @@ export const feeds = [
       content: '졸업하고 바로 취업했으면 좋겠다.',
       like: 0,
       d_day: 0,
+      img : '',
     },
     {
       id: 4,
@@ -34,6 +38,7 @@ export const feeds = [
       content: '한번이라도 입상해보자!',
       like: 0,
       d_day: 0,
+      img : '',
     },
   ];
   

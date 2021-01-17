@@ -25,20 +25,26 @@ class FeedCard extends Component{
             }
         )
     }
-    
+
 
     render(){
         return(
-            <Card >
-                <h1>{this.props.title}</h1>
-                <p> like : {this.state.like} D-day : {this.props.d_day} </p>
-                <div className = "contentbox">
-                    {this.props.content}<br></br>
+            <Card 
+                className = "feedbox">
+                <div className = "likeday ma3">
+                    <h1>{this.props.title}</h1>
+                    like : {this.state.like} D-day : {this.props.d_day}
                 </div>
-                <ButtonFeedLike onLike = {this.onLike}/>
-                <ButtonFeedDelete 
-                    onDelete = {this.props.onDelete}
-                    id = {this.props.id}/>
+                <div className = "contentbox">
+                    {this.props.content}
+                </div>
+                <img className = "imgs" alt= '' src= {`http://robohash.org/${this.props.id}?200*200`} />
+                <div className = "buttons">
+                    <ButtonFeedLike onLike = {this.onLike}/>
+                    <ButtonFeedDelete 
+                        onDelete = {this.props.onDelete}
+                        id = {this.props.id}/>
+                </div>
             </Card>
         )
 
