@@ -1,27 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
-import SignupTemplate from '../component/signup/SignupTemplate'
-import SignupForm from '../component/signup/SignupForm'
-import { setInput, checkValid } from '../reducer/signup'
+import RegisterTemplate from '../../component/register/RegisterTemplate'
+import SignupForm from '../../component/signup/SignupForm'
+import { setInput, checkValid } from '../../reducer/signup'
 import { Divider } from 'ui-neumorphism'
+import { getToday } from '../../lib/libs'
 import './signup.css'
 
 class SignupContainer extends Component {
-    getToday = async () => {
-        let today = new Date()
-        let dd = today.getDate()
-        if(dd < 10) {
-            dd = '0' + dd
-        }
-        let mm = today.getMonth() + 1
-        if(mm < 10) {
-            mm = '0' + mm
-        }
-        let yyyy = today.getFullYear()
-        today = `${yyyy}-${mm}-${dd}`
-        return today
-    }
     checkValid = async (id) => {
         const { userInfo, validation, preCheckValid } = this.props
         let check = false
@@ -38,8 +25,8 @@ class SignupContainer extends Component {
                 check = (0 < len && len <= 50 )? true : false
                 return preCheckValid({id, check})
             case 'death':
-                const today = await this.getToday()
-                check = (userInfo.birth < userInfo.death && userInfo.death > today)? true : false
+                const today = await getToday()
+                check = (userInfo.birth && userInfo.birth < userInfo.death && userInfo.death > today)? true : false
                 return preCheckValid({id, check})
             case 'profile_image':
                 check = true
@@ -68,7 +55,6 @@ class SignupContainer extends Component {
                     console.log(`res.status : ${JSON.stringify(res.status)}`)
                     if(res.status === 200) {
                         console.log(`signup success`)
-                        
                         const token = res.data.token
                         history.push({
                             pathname: '/',
@@ -93,7 +79,7 @@ class SignupContainer extends Component {
         const { onChange, validation } = this.props
         return(
             <div className='container'>
-                <SignupTemplate />
+                <RegisterTemplate text={'SIGNUP'} />
                 <Divider dense />
                 <SignupForm 
                     onChange = { onChange }
@@ -107,8 +93,8 @@ class SignupContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    userInfo: state.signup,
-    validation : state.validation
+    userInfo: state.signupInputField,
+    validation : state.validInputCheck
 })
 
 const mapDispatchToProps = (dispatch) => ({

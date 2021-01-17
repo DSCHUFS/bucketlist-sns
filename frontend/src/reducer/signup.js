@@ -46,7 +46,7 @@ const validInput = {
     tag: false
 }
 
-export const inputField = (state = initInputField, action = {}) => {
+export const signupInputField = (state = initInputField, action = {}) => {
     switch(action.type) {
         case CHANGE_INPUT :
             return { ...state, [action.payload.id]: action.payload.value }

@@ -18,22 +18,29 @@
 }
 .formContainer {
     display: grid;
-    justify-items: center;
 }
 .inputform {
     display: grid;
-    grid-template-columns: 500px 200px;
-    justify-items: center;
-    text-align: center; 
+    grid-template-columns: 1fr 2fr 1fr;
 }
 .input {
     display: grid;
+    justify-items: center;
 }
 .textContent {
     display: grid;
-    text-align: center;
-    place-items: center;
+    align-items: center;
+    text-align: start;
     font-size: small;
     font-weight: bold;
     color: rgb(60, 0, 129);
+}
+.signinformContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px;
+}
+.signininputform {
+    padding: 20px;
 }

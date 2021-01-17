@@ -27,19 +27,19 @@ exports.signupAPI = async(req, res) => {
         if(check_email[0].length > 0) {
             console.log(`duplicate email`)
             res.status(400).json({'msg' : `duplicate email`})
-        } else {
-            const hash_pw = bcrypt.hashSync(password, saltRounds)
-            await conn.beginTransaction()
-            const insert_user = await conn.query(signupQuery.USER_INSERT, [email, hash_pw, name, birth, death, profile_image, profile_detail])
-            const user_id = insert_user[0].insertId
-            
-            const tags = tag.split('/') // 여러 tag가 /로 구분되어 하나의 string으로 전달된다고 가정
-            await insertTags(user_id, tags) // 새로운 tag 삽입, following table에도 추가
-            let token = jwt.sign({ id: user_id }, secretKey, { expiresIn: '7d'}); // jwt 발급
-            console.log(`${email} signup success`)
-            res.status(200).json({'msg' : `signup success`, 'token' : token})
-            await conn.commit()
+            return false
         }
+        const hash_pw = bcrypt.hashSync(password, saltRounds)
+        await conn.beginTransaction()
+        const insert_user = await conn.query(signupQuery.USER_INSERT, [email, hash_pw, name, birth, death, profile_image, profile_detail])
+        const user_id = insert_user[0].insertId
+        
+        const tags = tag.split('/') // 여러 tag가 /로 구분되어 하나의 string으로 전달된다고 가정
+        await insertTags(user_id, tags) // 새로운 tag 삽입, following table에도 추가
+        let token = jwt.sign({ id: user_id }, secretKey, { expiresIn: '7d'}); // jwt 발급
+        console.log(`${email} signup success`)
+        res.status(200).json({'msg' : `signup success`, 'token' : token})
+        await conn.commit()
     } catch(e) {
         await conn.rollback()
         console.log(`signup e : ${e}`)
