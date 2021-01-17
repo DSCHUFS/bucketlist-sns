@@ -2,6 +2,7 @@ import React ,{ Component } from 'react';
 //import { Card } from 'ui-neumorphism'
 import 'ui-neumorphism/dist/index.css'
 import FeedCard from '../feedcard/FeedCard'
+import Scroll from '../../container/scroll/Scroll'
 
 
 class FeedList extends Component{
@@ -32,9 +33,9 @@ class FeedList extends Component{
             i = i + 1
         }
         return(
-            <div>
+            <Scroll>
                 {feedlist}
-            </div>
+            </Scroll>
         )
     }
 }
