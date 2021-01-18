@@ -1,3 +1,4 @@
+/*global kakao*/
 import React from "react";
 import styled from "styled-components";
 import { Card } from "ui-neumorphism";
@@ -24,12 +25,35 @@ const CardStyle = {
 };
 
 class RightSideBar extends React.Component {
+
+  componentDidMount(){
+    const script = document.createElement("script");
+    script.async = true;
+    script.src =
+      `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.KAKAO_APP_KEY}&autoload=false`;
+    document.head.appendChild(script);
+
+    script.onload = () => {
+      kakao.maps.load(() => {
+        let container = document.getElementById("Mymap");
+        let options = {
+          center: new kakao.maps.LatLng(37.506502, 127.053617),
+          level: 7
+        };
+
+        const map = new window.kakao.maps.Map(container, options);
+     
+      });
+    };
+  }
+
   render() {
     return (
       <RightSideBarRoot>
         <Card inset style={CardStyle}>
         <FollowingTagCard/>
         <Calendar/>
+        <div style={{width:'100%', height: '400px', marginTop: '10px'}} id="Mymap"/>
         </Card>
       </RightSideBarRoot>
     );
