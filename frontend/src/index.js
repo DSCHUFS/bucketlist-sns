@@ -1,24 +1,23 @@
-require('dotenv').config();
 import React from "react";
 import ReactDOM from "react-dom";
-import { Provider } from 'react-redux' 
-import { createStore, applyMiddleware } from 'redux'
-import { createLogger } from 'redux-logger'
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware, combineReducers } from "redux";
+import { createLogger } from "redux-logger";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
-import rootReducer from './reducer'
+import rootReducer from "./reducer";
 
-const logger = createLogger()
-const store = createStore(rootReducer, applyMiddleware(logger))
+const logger = createLogger();
+const store = createStore(rootReducer, applyMiddleware(logger));
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-    <Provider store={store}>
-      <App />
-    </Provider>
+      <Provider store={store}>
+        <App />
+      </Provider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")

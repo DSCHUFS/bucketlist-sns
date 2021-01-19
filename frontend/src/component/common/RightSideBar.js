@@ -2,8 +2,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Card } from "ui-neumorphism";
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 
 import FollowingTagCard from "./FollowingTagCard";
 
@@ -25,12 +25,10 @@ const CardStyle = {
 };
 
 class RightSideBar extends React.Component {
-
-  componentDidMount(){
+  componentDidMount() {
     const script = document.createElement("script");
     script.async = true;
-    script.src =
-      `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.KAKAO_APP_KEY}&autoload=false`;
+    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.REACT_APP_KAKAO_APP_KEY}&autoload=false`;
     document.head.appendChild(script);
 
     script.onload = () => {
@@ -38,11 +36,10 @@ class RightSideBar extends React.Component {
         let container = document.getElementById("Mymap");
         let options = {
           center: new kakao.maps.LatLng(37.506502, 127.053617),
-          level: 7
+          level: 7,
         };
 
         const map = new window.kakao.maps.Map(container, options);
-     
       });
     };
   }
@@ -51,9 +48,12 @@ class RightSideBar extends React.Component {
     return (
       <RightSideBarRoot>
         <Card inset style={CardStyle}>
-        <FollowingTagCard/>
-        <Calendar/>
-        <div style={{width:'100%', height: '400px', marginTop: '10px'}} id="Mymap"/>
+          <FollowingTagCard />
+          <Calendar />
+          <div
+            style={{ width: "100%", height: "400px", marginTop: "10px" }}
+            id="Mymap"
+          />
         </Card>
       </RightSideBarRoot>
     );
