@@ -1,8 +1,9 @@
 import React from 'react'
-import SignupContainer from '../container/SignupContainer'
-const SignupPage = () => {
+import SignupContainer from '../container/signup/SignupContainer'
+
+const SignupPage = ({history}) => {
     return (
-        <SignupContainer />
+        <SignupContainer history={history}/>
     )
 }
 
