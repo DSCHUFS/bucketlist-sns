@@ -1,8 +1,8 @@
 .feedbox{
     margin : 20px;
     margin-right: 30px;
-
     width : 95%;
+    padding : 10px;
 }
 
 .feedbox h1{
@@ -13,7 +13,8 @@
 
 .likeday{
     float: left;
-    margin-bottom: 30px;
+    font-size: 30px;
+    text-align: right;
 
 }
 .contentbox{
@@ -26,8 +27,12 @@
 }
 
 .buttons{
-    position: relative;
-    right : 5%
+    float: right;
+    margin-bottom: 10px;
+}
+
+.imgs{
+    margin-bottom: 20px;
 }
 
 

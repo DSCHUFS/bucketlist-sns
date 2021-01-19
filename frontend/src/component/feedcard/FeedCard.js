@@ -41,6 +41,7 @@ class FeedCard extends Component{
                 <img className = "imgs" alt= '' src= {`http://robohash.org/${this.props.id}?200*200`} />
                 <div className = "buttons">
                     <ButtonFeedLike onLike = {this.onLike}/>
+                    &nbsp; &nbsp;
                     <ButtonFeedDelete 
                         onDelete = {this.props.onDelete}
                         id = {this.props.id}/>

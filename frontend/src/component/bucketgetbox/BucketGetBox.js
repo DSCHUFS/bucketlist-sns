@@ -11,7 +11,7 @@ import ButtonFeedCreate from '../buttonfeedcreate/ButtonFeedCreate'
 class BucketGetBox extends Component{
     render(){
         return(
-            <Card>
+            <Card className="getbucket">
                 <h1>What's your Bucket</h1>
                 <div>
 
@@ -30,16 +30,23 @@ class BucketGetBox extends Component{
                     />
 
                     <input 
-                    className = "content"
-                    type = "text"
-                    placeholder = "내용이 뭐니?"
-                    onChange = {this.props.onInputChange_content}
+                        className = "content"
+                        type = "text"
+                        placeholder = "내용이 뭐니?"
+                        onChange = {this.props.onInputChange_content}
                     />
+
 
                     <div>
                         <ButtonFeedCreate 
                             onSubmitFeed = {this.props.onSubmitFeed}
                         />
+                        <input
+                            className ="imgs"
+                            type = "file"
+
+                        />
+
 
                     </div>
 

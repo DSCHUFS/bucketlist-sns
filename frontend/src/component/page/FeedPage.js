@@ -1,11 +1,11 @@
 import React , {Component} from 'react';
 import 'ui-neumorphism/dist/index.css';
-import { feeds } from '../../Store/Feed';
+import { feeds } from '../../store/Feed';
 
 //component
 
 import BucketGetBox from '../bucketgetbox/BucketGetBox';
-import FeedList from '../feedlist/FeedList';
+import FeedList from '../feedList/FeedList';
 
 
 //container
