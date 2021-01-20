@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import { Card } from "ui-neumorphism";
 import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
+import "./Calendar.css";
 
 import FollowingTagCard from "./FollowingTagCard";
 
