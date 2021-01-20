@@ -1,33 +1,65 @@
 // action
-export const CHANGE_INPUT = 'signup/CHANGE_INPUT'
+const CHANGE_INPUT = 'signup/CHANGE_INPUT'
+const CHECK_VALIDATION = 'signup/CHECK_VALIDATION'
 
 export const setInput = (input) => {
     const id = input.id
     const value = input.value
+    if(id === 'profile_image') {
+        console.log(input)
+    } // image upload시 처리
     return {
         type: CHANGE_INPUT,
         payload: { id, value }
     }
 }
 
+export const checkValid = (result) => {
+    return {
+        type: CHECK_VALIDATION,
+        payload: result
+    }
+}
+
 // reducer
 const initInputField = {
     email: '',
-    pw: '',
+    password: '',
     pwCheck: '',
     name: '',
     birth: '',
     death: '',
-    profile_image: '',
-    profile_text: '',
-    tags: ''
+    profile_image: 'none',
+    profile_detail: '',
+    tag: ''
 }
 
-export const inputField = (state = initInputField, action = {}) => {
+const validInput = {
+    email: false,
+    password: false,
+    pwCheck: false,
+    name: false,
+    birth: false,
+    death: false,
+    profile_image: false,
+    profile_detail: false,
+    tag: false
+}
+
+export const signupInputField = (state = initInputField, action = {}) => {
     switch(action.type) {
         case CHANGE_INPUT :
             return { ...state, [action.payload.id]: action.payload.value }
         default :
             return state
+    }
+}
+
+export const validInputCheck = (state = validInput, action = {}) => {
+    switch(action.type) {
+        case CHECK_VALIDATION :
+            return {...state, [action.payload.id]: action.payload.check}
+        default :
+            return {...state}
     }
 }

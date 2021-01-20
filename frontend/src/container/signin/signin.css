@@ -1,0 +1,39 @@
+.container {
+    background-color: #e6e9f2;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+}
+.header {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    height: 50px;
+}
+.header H5 {
+    flex-grow: 1;
+    font-weight: bold;
+    align-items: center;
+    text-align: center;
+}
+.input {
+    display: grid;
+    justify-items: center;
+}
+.textContent {
+    display: grid;
+    align-items: center;
+    text-align: start;
+    font-size: small;
+    font-weight: bold;
+    color: rgb(60, 0, 129);
+}
+.signinformContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px;
+}
+.signininputform {
+    padding: 20px;
+}
