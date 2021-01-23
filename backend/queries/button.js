@@ -1,0 +1,2 @@
+exports.INSERT_PUSH_BUTTON = `INSERT INTO PushButtons (user_id, button_type, button_push_at, bucket_id) VALUES (?, ?, ?, ?);`
+exports.DELETE_PUSH_BUTTON = `DELETE FROM PushButtons WHERE user_id = ? AND button_type = ? AND button_push_at = ? AND bucket_id = ?;`
