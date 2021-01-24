@@ -6,7 +6,7 @@ import SignupForm from '../../component/signup/SignupForm'
 import { setInput, checkValid } from '../../reducer/signup'
 import { Divider } from 'ui-neumorphism'
 import { getToday } from '../../lib/libs'
-import './signup.css'
+import '../../css/signup.css'
 
 class SignupContainer extends Component {
     checkValid = async (id) => {

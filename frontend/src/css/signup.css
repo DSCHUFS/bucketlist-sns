@@ -18,6 +18,7 @@
 }
 .formContainer {
     display: grid;
+    text-align: center;
 }
 .inputform {
     display: grid;

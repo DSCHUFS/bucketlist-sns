@@ -5,7 +5,7 @@ import RegisterTemplate from '../../component/register/RegisterTemplate'
 import SigninForm from '../../component/signin/SigninForm'
 import { Divider } from 'ui-neumorphism'
 import { setInput } from '../../reducer/signin'
-import './signin.css'
+import '../../css/signin.css'
 
 class SigninContainer extends Component {
     onRegister = () => {
