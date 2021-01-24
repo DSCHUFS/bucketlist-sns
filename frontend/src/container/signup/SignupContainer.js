@@ -56,9 +56,9 @@ class SignupContainer extends Component {
                     if(res.status === 200) {
                         console.log(`signup success`)
                         const token = res.data.token
+                        localStorage.setItem("token", token)
                         history.push({
-                            pathname: '/',
-                            state: {token: token}
+                            pathname: '/'
                         })
                     }
                 })

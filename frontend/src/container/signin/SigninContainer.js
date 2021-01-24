@@ -1,5 +1,6 @@
 import React, { Component }from 'react'
 import { connect } from 'react-redux'
+import { Link } from "react-router-dom"
 import axios from 'axios'
 import RegisterTemplate from '../../component/register/RegisterTemplate'
 import SigninForm from '../../component/signin/SigninForm'
@@ -19,9 +20,9 @@ class SigninContainer extends Component {
                 if(res.status === 200) {
                     console.log(`signin success`)
                     const token = res.data.token
+                    localStorage.setItem("token", token)
                     history.push({
-                        pathname: '/',
-                        state: {token: token}
+                        pathname: '/'
                     })
                 }
             })
@@ -43,6 +44,7 @@ class SigninContainer extends Component {
             <SigninForm
                 onChange={ onChange }
                 signin={this.signin}/>
+            <p>Forgot your email or password? | <Link to='signup'>Signup</Link></p>
             </div>
         )
     }
