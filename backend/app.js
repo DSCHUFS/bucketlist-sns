@@ -19,7 +19,6 @@ app.use("/tag", tagRouter);
 app.use("/search", searchRouter);
 app.use("/bucket", bucketRouter);
 app.use("/like", buttonRouter);
-app.use("/unlike", buttonRouter);
 
 app.use("/", function (req, res) {
   res.statusCode = 200; //send the appropriate status code
