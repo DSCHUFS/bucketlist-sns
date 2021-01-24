@@ -49,7 +49,7 @@ class SignupContainer extends Component {
             const {email, password, name, birth, death, profile_image, profile_detail, tag} = userInfo
             const user_info = { email, password, name, birth, death, profile_image, profile_detail, tag }
             console.log(user_info)
-            axios.post('http://localhost:3001/signup', user_info)
+            axios.post('signup', user_info)
                 .then(function (res) {
                     console.log(`res.data : ${JSON.stringify(res.data)}`)
                     console.log(`res.status : ${JSON.stringify(res.status)}`)
