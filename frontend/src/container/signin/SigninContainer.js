@@ -8,7 +8,7 @@ import { setInput } from '../../reducer/signin'
 import '../../css/signin.css'
 
 class SigninContainer extends Component {
-    onRegister = () => {
+    signin = () => {
         const { userInput, history } = this.props
         console.log(`singin onRegister`)
         console.log(this.props.userInput)
@@ -42,7 +42,7 @@ class SigninContainer extends Component {
             <Divider dense />
             <SigninForm
                 onChange={ onChange }
-                onRegister={this.onRegister}/>
+                signin={this.signin}/>
             </div>
         )
     }

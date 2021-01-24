@@ -40,7 +40,7 @@ class SignupContainer extends Component {
         }
     }
 
-    onRegister = async () => {
+    signup = async () => {
         const { validation, userInfo, history } = this.props
         console.log('signup button click')
         const isInputTrue = (curInput) => curInput === true
@@ -83,7 +83,7 @@ class SignupContainer extends Component {
                 <Divider dense />
                 <SignupForm 
                     onChange = { onChange }
-                    onRegister = { this.onRegister }
+                    signup = { this.signup }
                     checkValid = { this.checkValid }
                     validation = { validation }
                 />

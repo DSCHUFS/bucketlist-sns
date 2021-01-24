@@ -5,7 +5,7 @@ import SigninInputForm from './SigninInputForm'
 
 class SigninForm extends Component {
     render() {
-        const { onChange, onRegister } = this.props
+        const { onChange, signin } = this.props
         return ( 
             <div className='signinformContainer'>
             <SigninInputForm 
@@ -24,7 +24,7 @@ class SigninForm extends Component {
                 onChange = {onChange}
                 placeholder = 'password'
             />
-            <RegisterButton onRegister={onRegister} text={'signin'} />
+            <RegisterButton signin={signin} text={'signin'} />
             </div>
         )
     }

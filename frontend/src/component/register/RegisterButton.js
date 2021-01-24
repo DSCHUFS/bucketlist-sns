@@ -2,10 +2,10 @@ import React from 'react'
 import { Button } from 'ui-neumorphism'
 import 'ui-neumorphism/dist/index.css'
 
-const RegisterButton = ({ onRegister, text }) => {
+const RegisterButton = ({ text, ...rest }) => {
     return (
         <div>
-            <Button rounded onClick={ onRegister }> 
+            <Button rounded onClick={ rest }> 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{text}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </Button>
         </div>
