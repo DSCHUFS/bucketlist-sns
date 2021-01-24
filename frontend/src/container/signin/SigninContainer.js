@@ -1,27 +1,28 @@
 import React, { Component }from 'react'
 import { connect } from 'react-redux'
+import { Link } from "react-router-dom"
 import axios from 'axios'
 import RegisterTemplate from '../../component/register/RegisterTemplate'
 import SigninForm from '../../component/signin/SigninForm'
 import { Divider } from 'ui-neumorphism'
 import { setInput } from '../../reducer/signin'
-import './signin.css'
+import '../../css/signin.css'
 
 class SigninContainer extends Component {
-    onRegister = () => {
+    signin = () => {
         const { userInput, history } = this.props
         console.log(`singin onRegister`)
         console.log(this.props.userInput)
-        axios.post('http://localhost:3001/signin', userInput)
+        axios.post('signin', userInput)
             .then(function(res) {
                 console.log(`res.data : ${JSON.stringify(res.data)}`)
                 console.log(`res.status : ${res.status}`)
                 if(res.status === 200) {
                     console.log(`signin success`)
                     const token = res.data.token
+                    localStorage.setItem("token", token)
                     history.push({
-                        pathname: '/',
-                        state: {token: token}
+                        pathname: '/'
                     })
                 }
             })
@@ -42,7 +43,8 @@ class SigninContainer extends Component {
             <Divider dense />
             <SigninForm
                 onChange={ onChange }
-                onRegister={this.onRegister}/>
+                signin={this.signin}/>
+            <p>Forgot your email or password? | <Link to='signup'>Signup</Link></p>
             </div>
         )
     }

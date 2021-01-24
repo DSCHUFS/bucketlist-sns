@@ -5,7 +5,7 @@ import SignupInputForm from './SignupInputForm'
 
 class SignupForm extends Component {
     render() {
-        const { onChange, onRegister, checkValid, validation } = this.props
+        const { onChange, signup, checkValid, validation } = this.props
         return ( 
             <div className='formContainer'>
             <SignupInputForm 
@@ -98,7 +98,7 @@ class SignupForm extends Component {
                 validation = { validation.tag }
                 placeholder = 'tag1/tag2/tag3'
             />
-            <RegisterButton onRegister={onRegister} text={'signup'}/>
+            <RegisterButton signup={ signup } text={'signup'}/>
             </div>
         )
     }

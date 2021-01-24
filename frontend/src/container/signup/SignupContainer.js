@@ -6,7 +6,7 @@ import SignupForm from '../../component/signup/SignupForm'
 import { setInput, checkValid } from '../../reducer/signup'
 import { Divider } from 'ui-neumorphism'
 import { getToday } from '../../lib/libs'
-import './signup.css'
+import '../../css/signup.css'
 
 class SignupContainer extends Component {
     checkValid = async (id) => {
@@ -40,7 +40,7 @@ class SignupContainer extends Component {
         }
     }
 
-    onRegister = async () => {
+    signup = async () => {
         const { validation, userInfo, history } = this.props
         console.log('signup button click')
         const isInputTrue = (curInput) => curInput === true
@@ -49,16 +49,16 @@ class SignupContainer extends Component {
             const {email, password, name, birth, death, profile_image, profile_detail, tag} = userInfo
             const user_info = { email, password, name, birth, death, profile_image, profile_detail, tag }
             console.log(user_info)
-            axios.post('http://localhost:3001/signup', user_info)
+            axios.post('signup', user_info)
                 .then(function (res) {
                     console.log(`res.data : ${JSON.stringify(res.data)}`)
                     console.log(`res.status : ${JSON.stringify(res.status)}`)
                     if(res.status === 200) {
                         console.log(`signup success`)
                         const token = res.data.token
+                        localStorage.setItem("token", token)
                         history.push({
-                            pathname: '/',
-                            state: {token: token}
+                            pathname: '/'
                         })
                     }
                 })
@@ -83,7 +83,7 @@ class SignupContainer extends Component {
                 <Divider dense />
                 <SignupForm 
                     onChange = { onChange }
-                    onRegister = { this.onRegister }
+                    signup = { this.signup }
                     checkValid = { this.checkValid }
                     validation = { validation }
                 />
