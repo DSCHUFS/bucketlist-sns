@@ -1,6 +1,6 @@
-import React , {Component} from 'react';
-import 'ui-neumorphism/dist/index.css';
-import { feeds } from '../../Store/Feed';
+import React, { Component } from "react";
+import "ui-neumorphism/dist/index.css";
+import { feeds } from "../../store/Feed";
 
 //component
 
