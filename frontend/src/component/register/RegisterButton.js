@@ -1,17 +1,14 @@
-import React from 'react'
-import { Button } from 'ui-neumorphism'
-import 'ui-neumorphism/dist/index.css'
+import React from "react";
+import { Button } from "ui-neumorphism";
 
-const RegisterButton = ({ text, ...rest }) => {
-    let onClick = (text === "signup")? rest.signup : rest.signin
-    return (
-        <div>
-            <Button rounded onClick={ onClick }> 
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{text}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </Button>
-        </div>
-        
-    )
-}
+const RegisterButton = ({ onRegister, text }) => {
+  return (
+    <div>
+      <Button rounded onClick={onRegister}>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{text}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </Button>
+    </div>
+  );
+};
 
-export default RegisterButton
+export default RegisterButton;
