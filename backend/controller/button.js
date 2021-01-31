@@ -1,5 +1,5 @@
 const express = require('express')
-const moment = require('./timeStamp')
+const moment = require('../lib/timeStamp')
 const buttonQuery = require('../queries/button')
 
 exports.likeAPI = async(req, res) => {

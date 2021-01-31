@@ -1,5 +1,5 @@
 const db = require("../config/database");
-const moment = require('./timeStamp')
+const moment = require('../lib/timeStamp')
 const {
   CREATE_BUCKET,
   READ_BUCKET,
