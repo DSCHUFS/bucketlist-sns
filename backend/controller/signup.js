@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt')
 const signupQuery = require('../queries/signup')
 const jwt = require('jsonwebtoken');
 const secretKey = require('../config/jwt').secretKey
+const moment = require('../lib/timeStamp')
 
 const saltRounds = 10
 
@@ -19,7 +20,9 @@ exports.signupAPI = async(req, res) => {
         }
     }
     try {
-        const { email, password, name, birth, death, profile_image, profile_detail, tag} = req.body
+        const { email, password, name, birth, death, profile_detail, tag } = req.body
+        const profile_image = `upload/${moment.date()}/${res.profile_image}`
+        console.log(`profile_image : `, profile_image)
         console.log(`${email} post signup`)
 
         // email 중복 체크
