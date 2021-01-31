@@ -4,10 +4,15 @@ const CHECK_VALIDATION = 'signup/CHECK_VALIDATION'
 
 export const setInput = (input) => {
     const id = input.id
-    const value = input.value
+    let value = input.value
     if(id === 'profile_image') {
-        console.log(input)
-    } // image upload시 처리
+        value = input.event.target.files[0]
+        console.log('value : ', value)
+        return {
+            type: CHANGE_INPUT,
+            payload: { id, value }
+        }
+    } 
     return {
         type: CHANGE_INPUT,
         payload: { id, value }

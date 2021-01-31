@@ -44,12 +44,20 @@ class SignupContainer extends Component {
         const { validation, userInfo, history } = this.props
         console.log('signup button click')
         const isInputTrue = (curInput) => curInput === true
-
-        if(Object.values(validation).every(isInputTrue)) {
-            const {email, password, name, birth, death, profile_image, profile_detail, tag} = userInfo
-            const user_info = { email, password, name, birth, death, profile_image, profile_detail, tag }
-            console.log(user_info)
-            axios.post('signup', user_info)
+        // Object.values(validation).every(isInputTrue)
+        if(true) {
+            const { email, password, name, birth, death, profile_image, profile_detail, tag } = userInfo
+            const formData = new FormData()
+            formData.append('file', profile_image)
+            formData.append('email', email)
+            formData.append('password', password)
+            formData.append('name', name)
+            formData.append('birth', birth)
+            formData.append('death', death)
+            formData.append('profile_detail', profile_detail)
+            formData.append('tag', tag)
+            console.log(`formData : `, formData.entries())
+            axios.post('signup', formData)
                 .then(function (res) {
                     console.log(`res.data : ${JSON.stringify(res.data)}`)
                     console.log(`res.status : ${JSON.stringify(res.status)}`)
