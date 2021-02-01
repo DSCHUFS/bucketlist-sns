@@ -1,4 +1,5 @@
 import React ,{ Component } from 'react';
+import { ThemeProvider } from 'styled-components';
 import { Card } from 'ui-neumorphism'
 import 'ui-neumorphism/dist/index.css';
 import '../../css/FeedCard.css'
@@ -19,11 +20,21 @@ class FeedCard extends Component{
     }
     
     onLike = (event) =>{
-        this.setState(
-            {
-                like : this.state.like + 1
-            }
-        )
+        if (this.state.like === 1){
+            this.setState(
+                {
+                    like : this.state.like -1
+                }
+            )
+        } 
+        else{
+            this.setState(
+                {
+                    like : this.state.like + 1
+                }
+            )
+
+        }
     }
 
 
