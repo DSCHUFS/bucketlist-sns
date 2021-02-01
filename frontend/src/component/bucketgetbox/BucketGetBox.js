@@ -21,7 +21,7 @@ class BucketGetBox extends Component {
 
           <input
             className="dday"
-            type="text"
+            type="date"
             placeholder="D-day"
             onChange={this.props.onInputChange_d_day}
           />

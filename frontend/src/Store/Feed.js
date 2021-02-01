@@ -8,6 +8,7 @@ export const feeds = [
       img : '',
       
     },
+    /*
     {
       id: 1,
       title : '여행가기',
@@ -40,5 +41,6 @@ export const feeds = [
       d_day: 0,
       img : '',
     },
+    */
   ];
   

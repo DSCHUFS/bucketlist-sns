@@ -7,6 +7,8 @@ import { feeds } from "../../store/Feed";
 import BucketGetBox from "../bucketgetbox/BucketGetBox";
 import FeedList from "../feedList/FeedList";
 
+import moment from 'moment';
+
 //container
 
 //reducer
@@ -54,8 +56,20 @@ class FeedPage extends Component {
     }
     */
   onInputChange_d_day = (event) => {
-    console.log("dday");
-    this.setState({ dday: event.target.value });
+    var m = moment()
+    var days = event.target.value
+    console.log(days)
+
+    var result = Math.ceil(moment.duration(m.diff(days)).asDays())
+    if ( result >= 0 ){
+      alert("오늘보다 더 뒤로 날짜를 지정해주세요.")
+    }else{
+      this.setState({ dday: -(result) });
+      console.log(-(result))
+
+  }
+
+
   };
   onSubmitFeed = (event) => {
     if (this.state.ntitle.length === 0) {
