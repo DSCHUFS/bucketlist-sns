@@ -27,8 +27,11 @@ class FeedList extends Component{
                 title = {this.props.feeds[i].title}
                 content = {this.props.feeds[i].content}
                 like = {this.props.feeds[i].like}
+                like_token = {this.props.feeds[i].like_token}
                 d_day = {this.props.feeds[i].d_day}
-                onDelete = {this.props.onDelete}       
+                
+                onDelete = {this.props.onDelete}
+
             ></FeedCard>)
             i = i + 1
         }

@@ -38,9 +38,9 @@ class FeedPage extends Component {
       feeds: feeds,
       selected_content_id: 0,
       ntitle: "",
-      //nbucket : '',
+      nbucket : '',
       like: 0,
-      dday: "",
+      dday: 0,
       del_id: -1,
     };
   }
@@ -49,12 +49,12 @@ class FeedPage extends Component {
     console.log("title");
     this.setState({ ntitle: event.target.value });
   };
-  /*
-    onInputChange_content = (event) => {
-        console.log("content")
-        this.setState({ nbucket: event.target.value })
-    }
-    */
+  
+  onInputChange_content = (event) => {
+      console.log("content")
+      this.setState({ nbucket: event.target.value })
+  }
+
   onInputChange_d_day = (event) => {
     var m = moment()
     var days = event.target.value
@@ -74,7 +74,7 @@ class FeedPage extends Component {
   onSubmitFeed = (event) => {
     if (this.state.ntitle.length === 0) {
       alert("제목을 입력해주세요!");
-    } else if (this.props.nbucket.length === 0) {
+    } else if (this.state.nbucket.length === 0) {
       alert("내용을 입력해주세요!");
     } else {
       this.setState({
@@ -84,6 +84,7 @@ class FeedPage extends Component {
           content: this.props.nbucket,
           d_day: this.state.dday,
           like: 0,
+          like_token : 0,
         }),
       });
     }
@@ -100,14 +101,14 @@ class FeedPage extends Component {
   };
 
   render() {
-    const { nbucket, onInputChange_content } = this.props;
+    //const { nbucket, onInputChange_content } = this.props;
 
     return (
       <div className="feeds">
         <BucketGetBox
           className="bucketgetbox"
           onInputChange_title={this.onInputChange_title}
-          onInputChange_content={onInputChange_content}
+          onInputChange_content={this.onInputChange_content}
           onInputChange_d_day={this.onInputChange_d_day}
           onSubmitFeed={this.onSubmitFeed}
         />

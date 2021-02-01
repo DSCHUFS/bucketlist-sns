@@ -11,13 +11,25 @@ class FeedCard extends Component {
     super(props);
     this.state = {
       like: this.props.like,
+      like_token : this.props.like_token,
     };
   }
 
   onLike = (event) => {
-    this.setState({
-      like: this.state.like + 1,
-    });
+    console.log(this.state)
+    if ( this.state.like_token === 0){
+      this.setState({
+        like_token : this.state.like_token+1,
+        like: this.state.like+1, 
+      });
+    }
+    else if ( this.state.like_token === 1){
+      this.setState({
+        like_token : this.state.like_token-1,
+        like: this.state.like-1, 
+      });
+    }
+
   };
 
   render() {
