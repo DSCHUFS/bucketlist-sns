@@ -19,7 +19,6 @@ class SigninContainer extends Component {
                 console.log(`res.status : ${res.status}`)
                 if(res.status === 200) {
                     console.log(`signin success`)
-                    sessionStorage.setItem('token', res.data.token)
                     const token = res.data.token
                     localStorage.setItem("token", token)
                     history.push({
