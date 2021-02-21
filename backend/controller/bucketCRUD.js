@@ -1,17 +1,18 @@
 const db = require("../config/database");
-const moment = require('../lib/timeStamp')
+const moment = require("../lib/timeStamp");
 const {
   CREATE_BUCKET,
   READ_BUCKET,
   UPDATE_BUCKET,
   DELETE_BUCKET,
+  LIST_BUCKET,
 } = require("../queries/bucketCRUD");
 
 const createBucket = async (req, res) => {
   try {
-    const user_id = res.user_id
-    const bucketProgress = -1 // -1: 진행전, 0: 도전중, 1: 완료 (변경가능)
-    const bucketCreateAt = moment.datetime()
+    const user_id = res.user_id;
+    const bucketProgress = -1; // -1: 진행전, 0: 도전중, 1: 완료 (변경가능)
+    const bucketCreateAt = moment.datetime();
     const {
       bucketTitle,
       bucketContents,
@@ -28,7 +29,7 @@ const createBucket = async (req, res) => {
         bucketCreateAt,
         bucketDday,
         bucketLocation,
-        bucketProgress
+        bucketProgress,
       ]);
 
     if (result === undefined) {
@@ -44,7 +45,7 @@ const createBucket = async (req, res) => {
 };
 
 const readBucket = async (req, res) => {
-  try { 
+  try {
     const { bucketId } = req.params;
     let result = await db.promise().query(READ_BUCKET, [bucketId]);
     console.log(result[0]);
@@ -91,7 +92,7 @@ const updateBucket = async (req, res) => {
 
 const deleteBucket = async (req, res) => {
   try {
-    const user_id = res.user_id
+    const user_id = res.user_id;
     const { bucketId } = req.params;
     let result = await db.promise().query(DELETE_BUCKET, [bucketId, user_id]);
     console.log(result[0]);
@@ -104,7 +105,21 @@ const deleteBucket = async (req, res) => {
     res.status(400).json({ message: "fail" });
   }
 };
-const listBucket = async (req, res) => {};
+
+const listBucket = async (req, res) => {
+  try {
+    const user_id = res.user_id;
+    let result = await db.promise().query(LIST_BUCKET, [user_id]);
+    console.log(result[0]);
+    if (result === undefined) {
+      res.status(400).json({ message: "fail" });
+    }
+    res.status(200).json({ result: result[0] });
+  } catch (error) {
+    console.log(e);
+    res.status(400).json({ message: "fail" });
+  }
+};
 
 module.exports = {
   createBucket,

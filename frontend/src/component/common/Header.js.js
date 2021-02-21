@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { withRouter } from "react-router";
 import styled from "styled-components";
 import { Card } from "ui-neumorphism";
 import searchImg from "../../img/search.svg";
@@ -14,6 +15,12 @@ const HeaderRoot = styled.div`
   height: 80px;
 `;
 
+const HeaderTitle = styled.div`
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+`;
+
 const HeaderRootCard = {
   display: "flex",
   justifyContent: "center",
@@ -25,14 +32,22 @@ const HeaderRootCard = {
 };
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.handleOnClickLogo = this.handleOnClickLogo.bind(this);
+  }
+
+  handleOnClickLogo() {
+    this.props.history.push("/");
+  }
   render() {
     return (
       <HeaderRoot>
         <Card style={HeaderRootCard}>
           <HeaderProfile />
-          <div style={{ fontSize: "36px", fontWeight: "bold" }}>
+          <HeaderTitle onClick={this.handleOnClickLogo}>
             Bucket List
-          </div>
+          </HeaderTitle>
           <HeaderSearch />
         </Card>
       </HeaderRoot>
@@ -40,4 +55,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default withRouter(Header);
