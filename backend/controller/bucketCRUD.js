@@ -50,7 +50,7 @@ const createBucket = async (req, res) => { // bucket tag 추가
       bucketContents,
       bucketDday,
       bucketLocation,
-      tag // 쉼표로 분리된다고 가정
+      tag // array형태
     } = req.body;
 
     await conn.beginTransaction()
@@ -71,8 +71,7 @@ const createBucket = async (req, res) => { // bucket tag 추가
     const bucket_id = result[0].insertId
 
     // Bucket tag정보 저장
-    let tags = tag.split(',')
-    console.log(tags)
+    // console.log(tags)
     for (let i = 0; i < tags.length; i++) {
       let result = await conn.query(CHECK_TAG_EXIST, [tags[i]])
       if(result[0].length === 0) { // Tags table에 존재하지 않으면 tag table에 insert
@@ -109,7 +108,7 @@ const readBucket = async (req, res) => { // bucket tag 추가
 const updateBucket = async (req, res) => { 
   try {
     const { bucketId } = req.params;
-    console.log(bucketId)
+    // console.log(bucketId)
     const {
       bucketTitle,
       bucketContents,
@@ -117,7 +116,7 @@ const updateBucket = async (req, res) => {
       bucketLocation,
       bucketProgress
     } = req.body
-    console.log(bucketTitle)
+    
     let result = await res.pool.query(UPDATE_BUCKET, 
       [
         bucketTitle,
@@ -133,7 +132,8 @@ const updateBucket = async (req, res) => {
     }
     res.status(200).json({ 'msg' : 'bucket update success', 'bucket_id' : bucketId });
   } catch (error) {
-    console.log(e)
+    console.log(error)
+    res.status(400).json({ message: "fail" });
   }
 };
 
@@ -141,7 +141,7 @@ const deleteBucket = async (req, res) => {
   try {
     const user_id = res.user_id;
     const { bucketId } = req.params;
-    console.log(user_id, bucketId)
+    // console.log(user_id, bucketId)
     await res.pool.query(DELETE_BUCKET_TAGS, [bucketId])
     let result = await res.pool.query(DELETE_BUCKET, [bucketId, user_id]);
     
@@ -150,7 +150,7 @@ const deleteBucket = async (req, res) => {
     }
     res.status(200).json({ message: "Removed" });
   } catch (error) {
-    console.log(e);
+    console.log(error);
     res.status(400).json({ message: "fail" });
   }
 };
