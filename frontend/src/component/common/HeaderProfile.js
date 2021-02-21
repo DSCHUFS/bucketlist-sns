@@ -12,6 +12,10 @@ const HeaderProfileRoot = styled.div`
 
 class HeaderProfile extends Component {
   render() {
+
+    // console.log(this.props.userInfo);
+    const progress = this.subDate();
+    const userInfo = this.props.userInfo;
     return (
       <HeaderProfileRoot>
         <Avatar>K</Avatar>

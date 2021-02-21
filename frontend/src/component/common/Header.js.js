@@ -27,6 +27,52 @@ const HeaderRootCard = {
 };
 
 class Header extends Component {
+  state = {
+    currentUser: undefined,
+  };
+
+  constructor(props) {
+    super(props);
+    this.handleOnClickLogo = this.handleOnClickLogo.bind(this);
+    this.getCurrentUser = this.getCurrentUser.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.props.user === undefined) this.getCurrentUser();
+    else this.setState({ currentUser: this.props.user });
+  }
+
+  handleOnClickLogo() {
+    this.props.history.push("/");
+  }
+
+  getCurrentUser() {
+    var config = {
+      method: "get",
+      url: "/user/getid",
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+    };
+
+    axios(config)
+      .then((response) => {
+        const userId = response.data.user_id;
+        this.setState({
+          currentUser: userId,
+        });
+        this.setState({
+          ...this.state,
+          currentUser: userId,
+        });
+        this.props.setCurrentUser(userId);
+        sessionStorage.setItem("current_user", userId);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   render() {
     return (
       <HeaderRoot>
