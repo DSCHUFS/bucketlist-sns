@@ -11,6 +11,8 @@ import { setCurrentUser } from "../../reducer/user";
 import { connect } from "react-redux";
 import HeaderProfileContainer from "../../container/common/HeaderProfileContainer";
 
+
+
 const HeaderRoot = styled.div`
   display: flex;
   justify-content: center;
