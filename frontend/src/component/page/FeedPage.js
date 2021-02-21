@@ -3,7 +3,6 @@ import React, { Component} from "react";
 import "ui-neumorphism/dist/index.css";
 import { feeds } from "../../store/Feed";
 
-
 //component
 
 import BucketGetBox from "../bucketgetbox/BucketGetBox";
