@@ -1,24 +1,4 @@
-<<<<<<< Updated upstream
-import React ,{ Component } from 'react';
-import { ThemeProvider } from 'styled-components';
-import { Card } from 'ui-neumorphism'
-import 'ui-neumorphism/dist/index.css';
-import '../../css/FeedCard.css'
 
-
-
-//component
-import ButtonFeedDelete from '../buttonfeeddelete/ButtonFeedDelete'
-import ButtonFeedLike from '../buttonfeedlike/ButtonFeedLike'
-
-class FeedCard extends Component{
-
-    constructor(props){
-        super(props);
-        this.state = {
-            like : this.props.like,
-        }
-=======
 import React, { Component } from "react";
 import { Card, TextArea } from "ui-neumorphism";
 import "../../css/FeedCard.css";
@@ -45,53 +25,12 @@ class FeedCard extends Component {
         like_token : this.state.like_token+1,
         like: this.state.like+1, 
       });
->>>>>>> Stashed changes
+    }else{
+      this.setState({
+        like_token : this.state.like_token-1,
+        like: this.state.like-1, 
+      });
     }
-    
-    onLike = (event) =>{
-        if (this.state.like === 1){
-            this.setState(
-                {
-                    like : this.state.like -1
-                }
-            )
-        } 
-        else{
-            this.setState(
-                {
-                    like : this.state.like + 1
-                }
-            )
-
-        }
-    }
-<<<<<<< Updated upstream
-
-
-    render(){
-        return(
-            <Card 
-                className = "feedbox">
-                <div className = "likeday ma3">
-                    <h1>{this.props.title}</h1>
-                    like : {this.state.like} D-day : {this.props.d_day}
-                </div>
-                <div className = "contentbox">
-                    {this.props.content}
-                </div>
-                <img className = "imgs" alt= '' src= {`http://robohash.org/${this.props.id}?200*200`} />
-                <div className = "buttons">
-                    <ButtonFeedLike onLike = {this.onLike}/>
-                    &nbsp; &nbsp;
-                    <ButtonFeedDelete 
-                        onDelete = {this.props.onDelete}
-                        id = {this.props.id}/>
-                </div>
-            </Card>
-        )
-
-    }
-=======
   };
 
   onSetting = (id, mod) =>{
@@ -163,7 +102,7 @@ class FeedCard extends Component {
       );  
     }
   }
->>>>>>> Stashed changes
+
 }
 
 export default FeedCard
