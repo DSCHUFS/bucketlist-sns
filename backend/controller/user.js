@@ -27,8 +27,8 @@ exports.userUpdateAPI = async(req, res) => {
     try{
         const user_id = res.user_id
         const { name, birth, death, profile_image, profile_detail } = req.body // image는 file받는 걸로 변경해야함
-        console.log(name, birth, death, profile_detail, profile_image)
-        let info = [name, birth, death, profile_image, profile_detail, user_id]
+        // let info = [name, birth, death, profile_image, profile_detail, user_id]
+        let info = [name, birth, death, profile_detail, user_id]
         await res.pool.query(mypageQuery.UPDATE_USER_INFO, info)
         res.status(200).json({'msg':`profile update success`})
     } catch(e) {
