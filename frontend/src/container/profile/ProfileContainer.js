@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Component } from "react";
+import { connect } from "react-redux";
 import Profile from "../../component/profile/Profile";
 
 class ProfileContainer extends Component {
@@ -72,6 +73,8 @@ class ProfileContainer extends Component {
     )
       return (
         <Profile
+          currentUser={this.props.user}
+          userId={this.props.userId}
           userInfo={this.state.user_info}
           followingTags={this.state.following_tags}
         />
@@ -80,4 +83,8 @@ class ProfileContainer extends Component {
   }
 }
 
-export default ProfileContainer;
+const mapStateToProps = (state) => ({
+  user: state.User.user,
+});
+
+export default connect(mapStateToProps, {})(ProfileContainer);

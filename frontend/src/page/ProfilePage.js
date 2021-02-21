@@ -2,12 +2,10 @@ import React, { Component } from "react";
 import MainLayout from "../layout/MainLayout";
 import { withRouter } from "react-router-dom";
 import ProfileContainer from "../container/profile/ProfileContainer";
+import axios from "axios";
+import { connect } from "react-redux";
 
 class ProfilePage extends Component {
-  state = {
-    currentUser: undefined,
-  };
-
   componentDidMount() {
     // const token = localStorage.getItem('token')
     // console.log(token)
@@ -17,17 +15,24 @@ class ProfilePage extends Component {
     }
   }
 
-  getCurrentUser() {}
-
   render() {
     return (
       <>
         <MainLayout>
-          <ProfileContainer userId={this.props.match.params.userId} />
+          {this.props.user === undefined ? null : (
+            <ProfileContainer
+              userId={this.props.match.params.userId}
+              currentUser={this.props.user}
+            />
+          )}
         </MainLayout>
       </>
     );
   }
 }
 
-export default withRouter(ProfilePage);
+const mapStateToProps = (state) => ({
+  user: state.User.user,
+});
+
+export default connect(mapStateToProps, {})(withRouter(ProfilePage));
