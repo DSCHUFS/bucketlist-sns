@@ -12,6 +12,10 @@ const HeaderSearchRoot = styled.div`
   right: 20px;
 `;
 
+const SearchDiv = styled.div`
+  cursor: pointer;
+`;
+
 class HeaderSearch extends Component {
   state = {
     open: false,
@@ -29,12 +33,9 @@ class HeaderSearch extends Component {
         {this.state.open === true ? (
           <TextField style={{ marginTop: "22px" }} />
         ) : null}
-        <Button
-          style={{ borderRadius: "25px", width: "50px", height: "50px" }}
-          onClick={this.handleClickSearch}
-        >
-          <img width="25px" height="25px" src={searchImg} />
-        </Button>
+        <SearchDiv onClick={this.handleClickSearch}>
+          <img width="25px" height="25px" src={searchImg} alt="search" />
+        </SearchDiv>
       </HeaderSearchRoot>
     );
   }
