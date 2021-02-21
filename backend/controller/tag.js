@@ -1,5 +1,5 @@
 const tagQuery = require('../queries/tag')
-
+const { exportsValue } = require('../lib/obj')
 // 이미 있는 tag들 중 following/unfollowing
 exports.followingTagAPI = async(req, res) => {
     try {
@@ -19,8 +19,8 @@ exports.userFollowingListAPI = async(req, res) => {
     try{
         const user_id = res.user_id
         let result = await res.pool.query(tagQuery.FOLLOWING_LIST, [user_id])
-        const msg = (result[0].length === 0) ? `No following tags` : result[0].map(result => result.tag_name)
-        res.status(200).json({'msg':`${msg}`})
+        const tags = (result[0].length === 0) ? `No following tags` : await exportsValue(result[0], 'tag_name')
+        res.status(200).json({'msg': 'user following tags', 'tags' : tags})
     } catch(e) {
         console.log(e)
         res.status(400)
