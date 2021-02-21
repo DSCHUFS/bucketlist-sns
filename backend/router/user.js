@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const mypageController = require('../controller/mypage')
+const userController = require('../controller/user')
 const { uploadImage } = require('./middleware/uploadImage')
 const { verifyToken } = require('./middleware/verifyToken')
 
-router.get('', verifyToken, mypageController.mypageAPI)
-router.put('/update', verifyToken, mypageController.profileUpdateAPI)
+router.get('/:user_id', verifyToken, userController.userInfoAPI)
+router.put('/update', verifyToken, userController.userUpdateAPI)
 
 module.exports = router
