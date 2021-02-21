@@ -9,9 +9,11 @@ class FeedList extends Component{
     constructor(){
         super()
         this.state = {
-            feeds : this.props
+            feeds : this.props,
         }
     }
+
+    //로그인 토큰 넣기.
 
 
 
@@ -19,17 +21,25 @@ class FeedList extends Component{
         var data = this.props.feeds
         var i = 0;
         var feedlist = [];
+        //console.log(this.props.mod);
         while ( i < data.length){
             feedlist.push(            
-            <FeedCard 
-                key = {i}
-                id = {this.props.feeds[i].id}
-                title = {this.props.feeds[i].title}
-                content = {this.props.feeds[i].content}
-                like = {this.props.feeds[i].like}
-                d_day = {this.props.feeds[i].d_day}
-                onDelete = {this.props.onDelete}       
-            ></FeedCard>)
+
+                <FeedCard 
+                    key = {i}
+                    id = {this.props.feeds[i].id}
+                    title = {this.props.feeds[i].title}
+                    content = {this.props.feeds[i].content}
+                    like = {this.props.feeds[i].like}
+                    like_token = {this.props.feeds[i].like_token}
+                    d_day = {this.props.feeds[i].d_day}
+                    del_token = {this.props.feeds[i].del_token}
+                    onDelete = {this.props.onDelete}
+                    onSetContent = {this.props.onSetContent}
+                    onSaveContent = {this.props.onSaveContent}
+                    //mod = {this.props.mod}
+                ></FeedCard>)
+
             i = i + 1
         }
         return(
