@@ -1,6 +1,5 @@
 const tagQuery = require('../queries/tag')
 const { exportsValue } = require('../lib/obj')
-const e = require('express')
 
 exports.followingTagAPI = async(req, res) => {
     try {
