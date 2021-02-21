@@ -5,6 +5,10 @@ export const feeds = [
       content: 'I want to work at Codddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddmpany',
       like: 0,
       d_day: 0,
+      like: 10,
+      like_token : 0,
+      del_token : 0,
+      d_day: 20,
       img : '',
       
     },
