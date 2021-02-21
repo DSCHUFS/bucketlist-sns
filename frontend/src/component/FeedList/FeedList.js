@@ -40,6 +40,7 @@ class FeedList extends Component{
                     //mod = {this.props.mod}
                 ></FeedCard>)
 
+
             i = i + 1
         }
         return(

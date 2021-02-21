@@ -1,9 +1,11 @@
 import { Component } from "react";
+
 import styled from "styled-components";
 import { Card } from "ui-neumorphism";
 import searchImg from "../../img/search.svg";
 import HeaderProfile from "./HeaderProfile";
 import HeaderSearch from "./HeaderSearch";
+
 
 const HeaderRoot = styled.div`
   display: flex;
@@ -33,6 +35,7 @@ class Header extends Component {
           <div style={{ fontSize: "36px", fontWeight: "bold" }}>
             Bucket List
           </div>
+
           <HeaderSearch />
         </Card>
       </HeaderRoot>
@@ -41,3 +44,4 @@ class Header extends Component {
 }
 
 export default Header;
+

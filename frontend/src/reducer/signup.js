@@ -8,6 +8,7 @@ export const setInput = (input) => {
     if(id === 'profile_image') {
         console.log(input)
     } // image upload시 처리
+
     return {
         type: CHANGE_INPUT,
         payload: { id, value }

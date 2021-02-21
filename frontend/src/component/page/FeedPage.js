@@ -1,8 +1,8 @@
-
 import React, { Component} from "react";
 //import {useState} from "react";
 import "ui-neumorphism/dist/index.css";
 import { feeds } from "../../store/Feed";
+
 
 //component
 
@@ -12,31 +12,29 @@ import axios from "axios";
 import moment from "moment";
 
 
+import moment from 'moment';
+
 //container
 
 //reducer
-import { connect } from 'react-redux'
-import { setContent } from '../../action'
+import { connect } from "react-redux";
+import { setContent } from "../../action";
 
 //import Scroll from '../../container/scroll/Scroll';
 
 //css
-import '../../css/FeedPage.css'
+import "../../css/FeedPage.css";
 
-
-const mapStateToProps = state =>{
-    return {
-        nbucket : state.nbucket
-    }
-}
+const mapStateToProps = (state) => {
+  return {
+    nbucket: state.nbucket,
+  };
+};
 const mapDispatchToProps = (dispatch) => {
-    return {
-        onInputChange_content: (event) => dispatch ( setContent(event.target.value))
-
-    }
-}
-
-
+  return {
+    onInputChange_content: (event) => dispatch(setContent(event.target.value)),
+  };
+};
 
 
 class FeedPage extends Component {
@@ -52,14 +50,17 @@ class FeedPage extends Component {
       dday: 0,
       selectedFile : null,
       del_token: -1,
+
     };
   }
 
   onInputChange_title = (event) => {
+
     this.setState({ ntitle: event.target.value });
   };
   
   onInputChange_content = (event) => {
+
       this.setState({ nbucket: event.target.value })
   }
 
@@ -77,6 +78,7 @@ class FeedPage extends Component {
 
   };
 
+
   onSubmitFeed = (event) => {
     if (this.state.ntitle.length === 0) {
       alert("제목을 입력해주세요!");
@@ -86,6 +88,7 @@ class FeedPage extends Component {
       alert("날짜를 입력해주세요!")
     } 
     else {
+
       this.setState({
         feeds: feeds.push({
           id: feeds.length,
@@ -186,6 +189,7 @@ onSaveContent = (num) => {
     //const { nbucket, onInputChange_content } = this.props;
     var mod = 0;
     //console.log(mod);
+
     return (
       <div className="feeds">
         <BucketGetBox
@@ -194,6 +198,7 @@ onSaveContent = (num) => {
           onInputChange_content={this.onInputChange_content}
           onInputChange_d_day={this.onInputChange_d_day}
           onSubmitFeed={this.onSubmitFeed}
+
           onInputChange_pic = {this.onInputChange_pic}
  
         />
@@ -205,6 +210,7 @@ onSaveContent = (num) => {
           mod = {mod}
           ></FeedList>
         
+
       </div>
     );
   }

@@ -12,6 +12,7 @@ class MainPage extends Component {
       this.props.history.push({
         pathname: '/signin'
       })
+
     }
   }
   render() {

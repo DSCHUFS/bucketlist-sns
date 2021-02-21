@@ -1,6 +1,7 @@
 
 import React, { Component } from "react";
 import { Card, TextArea } from "ui-neumorphism";
+
 import "../../css/FeedCard.css";
 
 //component
@@ -12,6 +13,7 @@ import ButtonSetting from "../buttonsetting/ButtonSetting";
 
 import Upload from '../Upload'
 
+
 class FeedCard extends Component {
   constructor(props) {
     super(props);
@@ -19,6 +21,7 @@ class FeedCard extends Component {
       like: this.props.like,
       like_token : this.props.like_token,
       mod : 0,
+
     };
   }
 
@@ -29,6 +32,7 @@ class FeedCard extends Component {
         like_token : this.state.like_token+1,
         like: this.state.like+1, 
       });
+
     }else{
       this.setState({
         like_token : this.state.like_token-1,
@@ -51,8 +55,10 @@ class FeedCard extends Component {
         })
       }
 
+
     }
     
+
 
   }
 
@@ -102,6 +108,7 @@ class FeedCard extends Component {
     }
   }
 
+
 }
 
-export default FeedCard
+export default FeedCard;

@@ -5,12 +5,14 @@ const {
   updateBucket,
   deleteBucket,
   createBucket,
+  listBucket,
 } = require("../controller/bucketCRUD");
-const { verifyToken } = require('./middleware/verifyToken')
+const { verifyToken } = require("./middleware/verifyToken");
 
 router.post("/create", verifyToken, createBucket);
 router.get("/get/:bucketId", verifyToken, readBucket);
 router.post("/update/:bucketId", verifyToken, updateBucket);
 router.post("/delete/:bucketId", verifyToken, deleteBucket);
+router.get("/list", verifyToken, listBucket);
 
 module.exports = router;

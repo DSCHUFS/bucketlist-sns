@@ -1,10 +1,12 @@
 import React from "react";
+
 import styled from "styled-components";
 import { Button, Card } from "ui-neumorphism";
 import userImg from "../../img/user.svg";
 import heartImg from "../../img/heart.svg";
 import letterImg from "../../img/letter.svg";
 import exportImg from "../../img/export.svg";
+
 
 const LeftSideBarRoot = styled.div`
   display: flex;
@@ -37,6 +39,7 @@ class LeftSideBar extends React.Component {
       <LeftSideBarRoot>
         <Card inset style={CardStyle}>
           <Button text={false} style={ButtonStyle}>
+
             <img
               src={userImg}
               width="20px"
@@ -46,6 +49,7 @@ class LeftSideBar extends React.Component {
             프로필
           </Button>
           <Button text style={ButtonStyle}>
+
             <img
               src={userImg}
               width="20px"
@@ -54,6 +58,7 @@ class LeftSideBar extends React.Component {
             />
             나의 버킷
           </Button>
+
           <Button text style={ButtonStyle}>
             <img
               src={heartImg}
@@ -64,6 +69,7 @@ class LeftSideBar extends React.Component {
             내가 좋아요 누른 버킷
           </Button>
           <Button text style={ButtonStyle}>
+
             <img
               src={letterImg}
               width="20px"
@@ -72,6 +78,7 @@ class LeftSideBar extends React.Component {
             />
             개발자 Contact
           </Button>
+
           <Button text style={ButtonStyle}>
             <img
               src={exportImg}
@@ -82,6 +89,7 @@ class LeftSideBar extends React.Component {
             Export 버킷
           </Button>
           <Button text style={ButtonStyle}>
+
             <img
               src={userImg}
               width="20px"
@@ -90,6 +98,7 @@ class LeftSideBar extends React.Component {
             />
             전체 사용자 통계
           </Button>
+
         </Card>
       </LeftSideBarRoot>
     );
@@ -97,3 +106,4 @@ class LeftSideBar extends React.Component {
 }
 
 export default LeftSideBar;
+

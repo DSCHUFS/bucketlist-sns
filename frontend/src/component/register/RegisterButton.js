@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { Button } from 'ui-neumorphism'
 import 'ui-neumorphism/dist/index.css'
@@ -15,3 +16,4 @@ const RegisterButton = ({ text, ...rest }) => {
 }
 
 export default RegisterButton
+

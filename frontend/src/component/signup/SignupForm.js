@@ -99,6 +99,7 @@ class SignupForm extends Component {
                 placeholder = 'tag1/tag2/tag3'
             />
             <RegisterButton signup={ signup } text={'signup'}/>
+
             </div>
         )
     }

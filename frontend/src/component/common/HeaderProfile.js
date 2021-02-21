@@ -15,6 +15,7 @@ class HeaderProfile extends Component {
     return (
       <HeaderProfileRoot>
         <Avatar>K</Avatar>
+
         <div style={{ margin: "10px" }}>
           <div
             style={{
@@ -27,6 +28,7 @@ class HeaderProfile extends Component {
           </div>
           <ProgressLinear
             value={40}
+
             style={{ width: "200px", height: "10px" }}
             color="var(--primary)"
           />

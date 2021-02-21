@@ -14,3 +14,4 @@ class RegisterTemplate extends Component {
 }
 
 export default RegisterTemplate
+

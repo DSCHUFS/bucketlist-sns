@@ -41,7 +41,6 @@ class BucketGetBox extends Component {
             <ButtonFeedCreate onSubmitFeed={this.props.onSubmitFeed} />
           </div>
 
-          <Upload/>
         </div>
 
       </Card>
