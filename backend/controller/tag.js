@@ -11,7 +11,7 @@ exports.followingTagAPI = async(req, res) => {
         res.status(200).json({'msg' : `${following} ${tag_name}`})
     } catch(e) {
         console.log(e)
-        res.status(400)
+        res.status(400).json({'msg':`following tag failed`})
     }
 }
 
@@ -24,6 +24,6 @@ exports.userFollowingListAPI = async(req, res) => {
         res.status(200).json({'msg': 'user following tags', 'tags' : tags})
     } catch(e) {
         console.log(e)
-        res.status(400)
+        res.status(400).json({'msg':`Invalid user id`})
     }
 }

@@ -19,7 +19,7 @@ exports.userInfoAPI = async(req, res) => {
         res.status(200).json({'msg' : `user profile`, 'info' : user_info})
     } catch(e) {
         console.log(e)
-        res.status(400)
+        res.status(400).json({'msg':`Invalid user id`})
     }
 }
 
@@ -32,6 +32,6 @@ exports.userUpdateAPI = async(req, res) => {
         res.status(200).json({'msg':`profile update success`})
     } catch(e) {
         console.log(e)
-        res.status(400)
+        res.status(400).json({'msg':`Invalid user id`})
     }
 }
