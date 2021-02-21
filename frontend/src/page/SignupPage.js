@@ -1,5 +1,5 @@
 import React from 'react'
-import SignupContainer from '../container/signup/SignupContainer'
+import SignupContainer from '../container/signin/SigninContainer'
 
 const SignupPage = ({history}) => {
     return (

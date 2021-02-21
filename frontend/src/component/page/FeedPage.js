@@ -9,8 +9,6 @@ import { feeds } from "../../store/Feed";
 import BucketGetBox from "../bucketgetbox/BucketGetBox";
 import FeedList from "../feedList/FeedList";
 import axios from "axios";
-import moment from "moment";
-
 
 import moment from 'moment';
 
