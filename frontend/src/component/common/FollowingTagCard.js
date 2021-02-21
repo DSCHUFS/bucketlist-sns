@@ -13,18 +13,12 @@ class FollowingTagCard extends Component {
   state = {
     following_tags: undefined,
   };
-
-  constructor(props) {
-    super(props);
-    console.log(props.userId);
-  }
-
   componentDidMount() {
     this.getFollowingTags();
   }
 
   getFollowingTags() {
-    console.log(sessionStorage.getItem("current_user"));
+    // console.log(sessionStorage.getItem("current_user"));
     var config = {
       method: "get",
       url: `/tag/following/list/${sessionStorage.getItem("current_user")}`,
@@ -35,7 +29,7 @@ class FollowingTagCard extends Component {
 
     axios(config)
       .then((response) => {
-        console.log(JSON.stringify(response.data.tags));
+        // console.log(JSON.stringify(response.data.tags));
         if (response.data.tags !== "No following tags")
           this.setState({
             ...this.state,
@@ -47,7 +41,7 @@ class FollowingTagCard extends Component {
       });
   }
   render() {
-    console.log(this.state.following_tags);
+    // console.log(this.state.following_tags);
     return (
       <div>
         <span style={{ fontWeight: "bold" }}>FOLLOWING TAGS</span>

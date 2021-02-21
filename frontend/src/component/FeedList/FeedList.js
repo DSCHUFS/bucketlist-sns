@@ -1,53 +1,75 @@
-import React ,{ Component } from 'react';
+import React, { Component } from "react";
 //import { Card } from 'ui-neumorphism'
-import 'ui-neumorphism/dist/index.css'
-import FeedCard from '../feedcard/FeedCard'
-import Scroll from '../../container/scroll/Scroll'
+import "ui-neumorphism/dist/index.css";
+import FeedCard from "../feedcard/FeedCard";
+import Scroll from "../../container/scroll/Scroll";
+import axios from "axios";
+import { TabItems } from "ui-neumorphism";
 
+class FeedList extends Component {
+  state = {
+    bucket_list: undefined,
+  };
+  constructor() {
+    super();
+    this.state = {
+      feeds: this.props,
+    };
+    this.getList = this.getList.bind(this);
+  }
 
-class FeedList extends Component{
-    constructor(){
-        super()
-        this.state = {
-            feeds : this.props,
-        }
+  componentDidMount() {
+    this.getList();
+  }
+
+  getList() {
+    var config = {
+      method: "get",
+      url: "/bucket/list",
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+    };
+
+    axios(config)
+      .then((response) => {
+        console.log(response.data.info);
+        this.setState({
+          ...this.state,
+          bucket_list: response.data.info,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  render() {
+    if (this.state.bucket_list === undefined) {
+      return null;
     }
-
-    //로그인 토큰 넣기.
-
-
-
-    render(){
-        var data = this.props.feeds
-        var i = 0;
-        var feedlist = [];
-        //console.log(this.props.mod);
-        while ( i < data.length){
-            feedlist.push(            
-
-                <FeedCard 
-                    key = {i}
-                    id = {this.props.feeds[i].id}
-                    title = {this.props.feeds[i].title}
-                    content = {this.props.feeds[i].content}
-                    like = {this.props.feeds[i].like}
-                    like_token = {this.props.feeds[i].like_token}
-                    d_day = {this.props.feeds[i].d_day}
-                    del_token = {this.props.feeds[i].del_token}
-                    onDelete = {this.props.onDelete}
-                    onSetContent = {this.props.onSetContent}
-                    onSaveContent = {this.props.onSaveContent}
-                    //mod = {this.props.mod}
-                ></FeedCard>)
-
-            i = i + 1
-        }
-        return(
-            <Scroll>
-                {feedlist}
-            </Scroll>
-        )
-    }
+    const data = this.state.bucket_list;
+    return (
+      <Scroll>
+        {data.map((e, i) => (
+          <FeedCard
+            key={i}
+            id={e.bucket_id}
+            title={e.bucket_title}
+            content={e.bucket_contents}
+            like={e.like}
+            like_token={e.my_like}
+            d_day={e.d_day}
+            del_token={e.del_token}
+            onDelete={this.props.onDelete}
+            onSetContent={this.props.onSetContent}
+            onSaveContent={this.props.onSaveContent}
+            //mod = {this.props.mod}
+          />
+        ))}
+      </Scroll>
+    );
+  }
 }
 
-export default FeedList
+export default FeedList;
