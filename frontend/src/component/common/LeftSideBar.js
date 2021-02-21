@@ -1,10 +1,12 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 import { Button, Card } from "ui-neumorphism";
 import userImg from "../../img/user.svg";
 import heartImg from "../../img/heart.svg";
 import letterImg from "../../img/letter.svg";
 import exportImg from "../../img/export.svg";
+import { connect } from "react-redux";
 
 const LeftSideBarRoot = styled.div`
   display: flex;
@@ -32,11 +34,26 @@ const ButtonStyle = {
 };
 
 class LeftSideBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleOnClickProfile = this.handleOnClickProfile.bind(this);
+  }
+
+  handleOnClickProfile() {
+    this.props.history.push(`/user/${this.props.user}`);
+  }
   render() {
+    // console.log(window.location.href);
+    const currentMenu = window.location.href.split("/")[3];
+
     return (
       <LeftSideBarRoot>
         <Card inset style={CardStyle}>
-          <Button text={false} style={ButtonStyle}>
+          <Button
+            text={currentMenu === "user" ? false : true}
+            style={ButtonStyle}
+            onClick={this.handleOnClickProfile}
+          >
             <img
               src={userImg}
               width="20px"
@@ -45,7 +62,7 @@ class LeftSideBar extends React.Component {
             />
             프로필
           </Button>
-          <Button text style={ButtonStyle}>
+          {/* <Button text style={ButtonStyle}>
             <img
               src={userImg}
               width="20px"
@@ -53,7 +70,7 @@ class LeftSideBar extends React.Component {
               style={{ marginRight: "10px" }}
             />
             나의 버킷
-          </Button>
+          </Button> */}
           <Button text style={ButtonStyle}>
             <img
               src={heartImg}
@@ -63,7 +80,7 @@ class LeftSideBar extends React.Component {
             />
             내가 좋아요 누른 버킷
           </Button>
-          <Button text style={ButtonStyle}>
+          {/* <Button text style={ButtonStyle}>
             <img
               src={letterImg}
               width="20px"
@@ -71,7 +88,7 @@ class LeftSideBar extends React.Component {
               style={{ marginRight: "10px" }}
             />
             개발자 Contact
-          </Button>
+          </Button> */}
           <Button text style={ButtonStyle}>
             <img
               src={exportImg}
@@ -81,7 +98,7 @@ class LeftSideBar extends React.Component {
             />
             Export 버킷
           </Button>
-          <Button text style={ButtonStyle}>
+          {/* <Button text style={ButtonStyle}>
             <img
               src={userImg}
               width="20px"
@@ -89,11 +106,15 @@ class LeftSideBar extends React.Component {
               style={{ marginRight: "10px" }}
             />
             전체 사용자 통계
-          </Button>
+          </Button> */}
         </Card>
       </LeftSideBarRoot>
     );
   }
 }
 
-export default LeftSideBar;
+const mapStateToProps = (state) => ({
+  user: state.User.user,
+});
+
+export default connect(mapStateToProps, {})(withRouter(LeftSideBar));
