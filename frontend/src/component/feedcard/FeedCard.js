@@ -8,6 +8,10 @@ import ButtonFeedDelete from "../buttonfeeddelete/ButtonFeedDelete";
 import ButtonFeedLike from "../buttonfeedlike/ButtonFeedLike";
 import ButtonSetting from "../buttonsetting/ButtonSetting";
 
+
+
+import Upload from '../Upload'
+
 class FeedCard extends Component {
   constructor(props) {
     super(props);
@@ -34,8 +38,6 @@ class FeedCard extends Component {
   };
 
   onSetting = (id, mod) =>{
-    //console.log(mod);
-
     if ( mod === 1){
       this.setState({
         mod : 0,
@@ -49,12 +51,6 @@ class FeedCard extends Component {
         })
       }
 
-
-      //var choice = confirm('수정을 하면 이전 내용은 사라집니다. 수정하시겠습니까?');
-      //this.props.onSaveContent(id)
-
-      //this.props.onSaveContent(id)
-      //this.props.onSetContent()
     }
     
 
@@ -68,6 +64,7 @@ class FeedCard extends Component {
           <h1>{this.props.title}</h1>
           <p className = "likeday"> like : {this.state.like} D-day : {this.props.d_day}</p>
           <div className="contentbox">{this.props.content}</div>
+          <img src = ''/>
           <div className = "buttons">
             <ButtonFeedLike  onLike={this.onLike} num = {this.props.id} />
             <ButtonFeedDelete  onDelete={this.props.onDelete} id={this.props.id} />
@@ -77,6 +74,8 @@ class FeedCard extends Component {
               mod = {this.state.mod}
             />  
           </div>
+
+          <Upload/>
         </Card>
       );
     }else{

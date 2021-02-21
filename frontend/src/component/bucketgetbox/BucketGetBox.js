@@ -1,13 +1,16 @@
-import React ,{ Component } from 'react';
+import React ,{ Component, useState } from 'react';
 import { Card  } from 'ui-neumorphism'
 import 'ui-neumorphism/dist/index.css';
 import '../../css/BucketGetBox.css'
+import Upload from '../Upload'
 
 //component
 import ButtonFeedCreate from '../buttonfeedcreate/ButtonFeedCreate'
 //import ButtonFeedDelete from '../buttonfeeddelete/ButtonFeedDelete'
 
+
 class BucketGetBox extends Component {
+  
   render() {
     return (
       <Card className="getbucket">
@@ -33,12 +36,14 @@ class BucketGetBox extends Component {
             placeholder="내용이 뭐니?"
             onChange={this.props.onInputChange_content}
           />
-
           <div
             className = "buttonpush">
             <ButtonFeedCreate onSubmitFeed={this.props.onSubmitFeed} />
           </div>
+
+          <Upload/>
         </div>
+
       </Card>
     );
   }
