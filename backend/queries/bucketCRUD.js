@@ -10,7 +10,10 @@ const UPDATE_BUCKET = `
   WHERE bucket_id = ?
 `;
 const DELETE_BUCKET = `DELETE FROM Buckets WHERE bucket_id = ? and user_id = ?`;
-const LIST_BUCKET = ``;
+const LIST_BUCKET = `
+  SELECT * FROM Buckets
+  WHERE user_id = ?
+`;
 
 module.exports = {
   CREATE_BUCKET,
