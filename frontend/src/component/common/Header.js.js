@@ -67,14 +67,16 @@ class Header extends Component {
 
     axios(config)
       .then((response) => {
+        const userId = response.data.user_id;
         this.setState({
-          currentUser: response.data.user_id,
+          currentUser: userId,
         });
         this.setState({
           ...this.state,
-          currentUser: response.data.user_id,
+          currentUser: userId,
         });
-        this.props.setCurrentUser(response.data.user_id);
+        this.props.setCurrentUser(userId);
+        sessionStorage.setItem("current_user", userId);
       })
       .catch(function (error) {
         console.log(error);

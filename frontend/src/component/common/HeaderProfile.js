@@ -24,7 +24,7 @@ class HeaderProfile extends Component {
     return Math.floor((past / total) * 100);
   }
   render() {
-    console.log(this.props.userInfo);
+    // console.log(this.props.userInfo);
     const progress = this.subDate();
     const userInfo = this.props.userInfo;
     return (

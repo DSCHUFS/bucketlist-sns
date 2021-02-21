@@ -45,7 +45,7 @@ class ProfileContainer extends Component {
   getFollowingTags() {
     var config = {
       method: "get",
-      url: `/tag/following/list/${this.props.userId}`,
+      url: `/tag/following/list/${sessionStorage.getItem("current_user")}`,
       headers: {
         Authorization: localStorage.getItem("token"),
         "user-id": this.props.userId,
