@@ -1,10 +1,12 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 import { Button, Card } from "ui-neumorphism";
 import userImg from "../../img/user.svg";
 import heartImg from "../../img/heart.svg";
 import letterImg from "../../img/letter.svg";
 import exportImg from "../../img/export.svg";
+import { Redirect } from "react-router";
 
 const LeftSideBarRoot = styled.div`
   display: flex;
@@ -32,11 +34,26 @@ const ButtonStyle = {
 };
 
 class LeftSideBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleOnClickProfile = this.handleOnClickProfile.bind(this);
+  }
+
+  handleOnClickProfile() {
+    this.props.history.push("/profile");
+  }
   render() {
+    // console.log(window.location.href);
+    const currentMenu = window.location.href.split("/")[3];
+
     return (
       <LeftSideBarRoot>
         <Card inset style={CardStyle}>
-          <Button text={false} style={ButtonStyle}>
+          <Button
+            text={currentMenu === "profile" ? false : true}
+            style={ButtonStyle}
+            onClick={this.handleOnClickProfile}
+          >
             <img
               src={userImg}
               width="20px"
@@ -96,4 +113,4 @@ class LeftSideBar extends React.Component {
   }
 }
 
-export default LeftSideBar;
+export default withRouter(LeftSideBar);

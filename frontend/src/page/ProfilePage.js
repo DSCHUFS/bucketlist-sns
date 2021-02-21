@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import MainLayout from "../layout/MainLayout";
 import { withRouter } from "react-router-dom";
 import Profile from "../component/profile/Profile";
+import ProfileContainer from "../container/profile/ProfileContainer";
 
 class ProfilePage extends Component {
   componentDidMount() {
@@ -16,7 +17,7 @@ class ProfilePage extends Component {
     return (
       <>
         <MainLayout>
-          <Profile />
+          <ProfileContainer />
         </MainLayout>
       </>
     );
