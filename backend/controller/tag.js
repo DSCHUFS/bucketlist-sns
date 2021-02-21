@@ -1,17 +1,23 @@
 const tagQuery = require('../queries/tag')
 const { exportsValue } = require('../lib/obj')
+const e = require('express')
 
 exports.followingTagAPI = async(req, res) => {
     try {
         const user_id = res.user_id
         const { tag_name, following } = req.body
         let find_tag = await res.pool.query(tagQuery.CHECK_TAG_EXIST, [tag_name])
-        if(find_tag[0].length === 0) {
-            await res.pool.query(ADD_TAG, [tag_name])
+        if(following === 'following' && find_tag[0].length === 0) {
+            await res.pool.query(tagQuery.ADD_TAG, [tag_name])
         }
         const following_query = (following === 'unfollowing') ? tagQuery.UNFOLLOWING_TAG : tagQuery.FOLLOWING_TAG
 
-        await res.pool.query(following_query, [user_id, tag_name])
+        let ex_check = await res.pool.query(tagQuery.CHECK_FOLLOWING_EXIST, [user_id, tag_name])
+        if((ex_check[0].length === 0 && following === 'following') || (ex_check[0].length !== 0 && following === 'unfollowing')) {
+            await res.pool.query(following_query, [user_id, tag_name])
+        } else {
+            throw e
+        }
         res.status(200).json({'msg' : `${following} ${tag_name}`})
     } catch(e) {
         console.log(e)
