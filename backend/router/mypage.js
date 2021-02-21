@@ -5,6 +5,6 @@ const { uploadImage } = require('./middleware/uploadImage')
 const { verifyToken } = require('./middleware/verifyToken')
 
 router.get('', verifyToken, mypageController.mypageAPI)
-// router.put('', uploadImage, mypageController.profileUpdateAPI)
+router.put('/update', verifyToken, mypageController.profileUpdateAPI)
 
 module.exports = router
