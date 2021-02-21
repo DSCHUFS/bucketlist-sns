@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Button, Card, Chip, TextArea, TextField } from "ui-neumorphism";
 import axios from "axios";
+import { withRouter } from "react-router";
+import { connect } from "react-redux";
+import { setCurrentUser } from "../../reducer/user";
 
 const ProfileRoot = styled.div`
   display: flex;
@@ -50,6 +53,7 @@ const FollowingTagStyle = {
 
 class Profile extends Component {
   state = {
+    current_user: undefined,
     user_info: undefined,
     following_tags: undefined,
     add_tag: false,
@@ -61,17 +65,19 @@ class Profile extends Component {
     this.state = {
       user_info: props.userInfo,
       following_tags: props.followingTags,
+      current_user: props.currentUser,
     };
 
     this.handleOnKeyDownDetail = this.handleOnKeyDownDetail.bind(this);
     this.handleOnKeyDownAddTag = this.handleOnKeyDownAddTag.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   editBirth() {}
 
   editDeath() {}
 
-  editDetail() {}
+  // editDetail() {}
 
   handleOnKeyDownDetail(e) {
     if (!e.shiftKey && e.keyCode === 13) {
@@ -191,10 +197,19 @@ class Profile extends Component {
     }
   }
 
+  handleLogout() {
+    localStorage.clear();
+    this.props.setCurrentUser(undefined);
+    this.props.history.push("/signin");
+  }
+
   render() {
     console.log(this.state);
+    console.log(this.props.userId);
     const userInfo = this.state.user_info;
     const followingTags = this.state.following_tags;
+    const isMyPage =
+      this.state.current_user === Number.parseInt(this.props.userId);
 
     if (userInfo === undefined || followingTags === undefined) return <></>;
     return (
@@ -223,17 +238,19 @@ class Profile extends Component {
           <>
             <h4 style={{ color: "#555555" }}>{userInfo.profile_detail}</h4>
             <br />
-            <div
-              onClick={() =>
-                this.setState({
-                  ...this.state,
-                  edit_detail: !this.state.edit_detail,
-                })
-              }
-              style={{ cursor: "pointer" }}
-            >
-              수정하기
-            </div>
+            {isMyPage ? (
+              <div
+                onClick={() =>
+                  this.setState({
+                    ...this.state,
+                    edit_detail: !this.state.edit_detail,
+                  })
+                }
+                style={{ cursor: "pointer" }}
+              >
+                수정하기
+              </div>
+            ) : null}
           </>
         )}
         <br />
@@ -247,8 +264,8 @@ class Profile extends Component {
                 key={e}
                 style={ChipStyle}
                 size="large"
-                closable
-                onAction={() => this.removeTag(e)}
+                closable={isMyPage}
+                onAction={isMyPage ? () => this.removeTag(e) : () => {}}
               >
                 {e}
               </Chip>
@@ -262,7 +279,7 @@ class Profile extends Component {
               dense
               onKeyDown={this.handleOnKeyDownAddTag}
             />
-          ) : (
+          ) : isMyPage ? (
             <AddTagDiv
               onClick={() => this.setState({ ...this.state, add_tag: true })}
             >
@@ -270,11 +287,27 @@ class Profile extends Component {
                 +
               </Chip>
             </AddTagDiv>
-          )}
+          ) : null}
         </Card>
+        <br />
+        <br />
+        {isMyPage ? (
+          <Button onClick={this.handleLogout}>로그아웃</Button>
+        ) : null}
       </ProfileRoot>
     );
   }
 }
 
-export default Profile;
+const mapStateToProps = (state) => ({
+  user: state.User.user,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setCurrentUser: (e) => dispatch(setCurrentUser(e)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(Profile));
