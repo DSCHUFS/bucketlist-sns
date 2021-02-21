@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import MainLayout from "../layout/MainLayout";
 import { withRouter } from "react-router-dom";
-import Profile from "../component/profile/Profile";
 import ProfileContainer from "../container/profile/ProfileContainer";
 
 class ProfilePage extends Component {
+  state = {
+    currentUser: undefined,
+  };
+
   componentDidMount() {
     // const token = localStorage.getItem('token')
     // console.log(token)
@@ -13,11 +16,14 @@ class ProfilePage extends Component {
       this.props.history.push({ pathname: "/signin" });
     }
   }
+
+  getCurrentUser() {}
+
   render() {
     return (
       <>
         <MainLayout>
-          <ProfileContainer />
+          <ProfileContainer userId={this.props.match.params.userId} />
         </MainLayout>
       </>
     );
