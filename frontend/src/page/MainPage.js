@@ -5,13 +5,11 @@ import FeedPage from "../component/page/FeedPage";
 
 class MainPage extends Component {
   componentDidMount() {
-    localStorage.setItem('token', 'thisistoken') // temp localStorage
-    const token = localStorage.getItem('token')
-    // console.log(token)
-    if(!token) {
+    const token = localStorage.getItem("token");
+    if (!token) {
       this.props.history.push({
-        pathname: '/signin'
-      })
+        pathname: "/signin",
+      });
     }
   }
   render() {
