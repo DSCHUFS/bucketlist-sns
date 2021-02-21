@@ -1,15 +1,16 @@
 const { exportsValue } = require('../lib/obj')
-// const mypageQuery = require('../queries/mypage')
+const mypageQuery = require('../queries/mypage')
 const url = 'http://localhost:3001/'
+
 exports.mypageAPI = async(req, res) => {
     try {
         const user_id = res.user_id
-        let info = await res.pool.query(`SELECT user_email, user_name, user_birth, user_death, user_profile_image, user_profile_detail FROM Users WHERE user_id = ?;`, [user_id])
-        let tags = await res.pool.query(`SELECT tag_name FROM FollowingTags WHERE user_id = ?;`, [user_id])
+        let info = await res.pool.query(mypageQuery.SELECT_USER_INFO, [user_id])
+        let tags = await res.pool.query(mypageQuery.SELECT_FOLLOWING_TAGS, [user_id])
         info = info[0][0]
         tags = await exportsValue(tags[0], 'tag_name')
         console.log(tags)
-        user_info = { 
+        user_info = {
             email : info.user_email, 
             name : info.user_name, 
             birth : info.user_birth,
@@ -20,6 +21,19 @@ exports.mypageAPI = async(req, res) => {
         }
         
         res.status(200).json({'msg' : `user profile`, 'info' : user_info})
+    } catch(e) {
+        console.log(e)
+        res.status(400)
+    }
+}
+
+exports.profileUpdateAPI = async(req, res) => {
+    try{
+        const user_id = res.user_id
+        const { name, birth, death, profile_image, profile_detail } = req.body // image는 file받는 걸로 변경해야함
+        let info = [name, birth, death, profile_image, profile_detail, user_id]
+        await res.pool.query(mypageQuery.UPDATE_USER_INFO, info)
+        res.status(200).json({'msg':`profile update success`})
     } catch(e) {
         console.log(e)
         res.status(400)
