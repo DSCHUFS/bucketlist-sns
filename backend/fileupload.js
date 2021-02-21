@@ -10,8 +10,8 @@ const makeDir = async(dir) => {
 
 const storage = multer.diskStorage({
     destination: async function(req, file, cb) {
-        await makeDir('upload/'+ moment.date())
-        cb(null, 'upload/'+ moment.date()) // file save path(backend/upload)
+        await makeDir('public/upload/'+ moment.date())
+        cb(null, 'public/upload/'+ moment.date()) // file save path(backend/upload)
     },
     filename: function(req, file, cb) {
         console.log(file.originalname)
