@@ -1,12 +1,16 @@
-import React, { Component } from "react";
-import { Card } from "ui-neumorphism";
-import "../../css/BucketGetBox.css";
+import React ,{ Component, useState } from 'react';
+import { Card  } from 'ui-neumorphism'
+import 'ui-neumorphism/dist/index.css';
+import '../../css/BucketGetBox.css'
+import Upload from '../Upload'
 
 //component
-import ButtonFeedCreate from "../buttonfeedcreate/ButtonFeedCreate";
+import ButtonFeedCreate from '../buttonfeedcreate/ButtonFeedCreate'
 //import ButtonFeedDelete from '../buttonfeeddelete/ButtonFeedDelete'
 
+
 class BucketGetBox extends Component {
+  
   render() {
     return (
       <Card className="getbucket">
@@ -26,21 +30,33 @@ class BucketGetBox extends Component {
             onChange={this.props.onInputChange_d_day}
           />
 
-          <input
+          <textarea
             className="content"
             type="text"
             placeholder="내용이 뭐니?"
             onChange={this.props.onInputChange_content}
           />
-
-          <div>
+          <div
+            className = "buttonpush">
             <ButtonFeedCreate onSubmitFeed={this.props.onSubmitFeed} />
-            <input className="imgs" type="file" />
           </div>
+
+          <Upload/>
         </div>
+
       </Card>
     );
   }
 }
 
 export default BucketGetBox;
+
+
+/*
+
+            <input 
+            className="imgs" 
+            type="file" 
+            accept = "image/jpeg, image.jpg"
+            onChange = {this.props.onInputChange_pic} />
+*/

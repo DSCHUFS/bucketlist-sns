@@ -1,39 +1,41 @@
 .feedbox{
-    margin : 20px;
-    margin-right: 30px;
     width : 95%;
-    padding : 10px;
+    height: auto;
+    padding : 20px;
 }
 
 .feedbox h1{
-    margin-left: 20px;
-    margin-top : 20px;
     font-size: 50px;
+    text-align: left;
 }
 
 .likeday{
-    float: left;
-    font-size: 30px;
-    text-align: right;
+    text-align: left;
+    margin-bottom: 10px;
 
 }
 .contentbox{
-    float: left;
+    margin-top: 10px;
+    margin-bottom:  10px;
     font-size: 30px;
-    width : 90%;
-    margin: 10px;
-    padding: 10px;
     word-break:break-all;
+    text-align: left;
 }
 
 .buttons{
-    float: right;
-    margin-bottom: 10px;
+    float:right;
 }
+
 
 .imgs{
-    margin-bottom: 20px;
 }
 
+
+.content{
+    overflow: hidden;
+    resize: vertical;
+    margin:  0px;
+    float : left;
+}
 
 
