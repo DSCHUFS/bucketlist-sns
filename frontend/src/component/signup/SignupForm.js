@@ -98,7 +98,7 @@ class SignupForm extends Component {
                 validation = { validation.tag }
                 placeholder = 'tag1/tag2/tag3'
             />
-            <RegisterButton signup={ signup } text={'signup'}/>
+            <RegisterButton onRegister={ signup } validation = { validation } text={'signup'}/>
             </div>
         )
     }

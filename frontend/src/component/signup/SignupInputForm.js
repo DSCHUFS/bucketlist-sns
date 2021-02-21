@@ -14,17 +14,17 @@ class SignupInputForm extends Component {
         let text_content = ''
         if(!validation) {
             switch (id) {
-                case 'email' :
-                    text_content = '올바른 형식이 아닙니다'
-                    break
+                // case 'email' :
+                //     text_content = '올바른 형식이 아닙니다'
+                //     break
                 case 'pwCheck' :
                     text_content = '비밀번호와 일치하지 않습니다'
                     break
                 case 'death' :
                     text_content = '올바른 입력이 아닙니다'
                     break
-                default :
-                    text_content = '입력해 주세요'
+                // default :
+                //     text_content = '입력해 주세요'
             }
         } else {
             text_content = '✔'

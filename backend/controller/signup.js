@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt')
 const signupQuery = require('../queries/signup')
 const jwt = require('jsonwebtoken');
 const secretKey = require('../config/jwt').secretKey
+const moment = require('../lib/timeStamp')
 
 const saltRounds = 10
 
@@ -11,15 +12,16 @@ exports.signupAPI = async(req, res) => {
     const insertTags = async (user_id, tags) => {
         for (let i = 0; i < tags.length; i++) {
             let result = await conn.query(signupQuery.FIND_TAG_NAME, [tags[i]])
-            if(result[0].length === 0) { // Tags table에 존재하지 않으면 insert
+            if(result[0].length === 0) { // Tags table에 존재하지 않으면 tag table에 insert
                 await conn.query(signupQuery.TAG_INSERT, [tags[i]])
-            } else {
-                await conn.query(signupQuery.FOLLOWING_TAG, [user_id, tags[i]])
-            }
+            } 
+            await conn.query(signupQuery.FOLLOWING_TAG, [user_id, tags[i]]) // following tag에도 추가
         }
     }
     try {
-        const { email, password, name, birth, death, profile_image, profile_detail, tag} = req.body
+        const { email, password, name, birth, death, profile_detail, tag } = req.body
+        const profile_image = `upload/${moment.date()}/${res.profile_image}`
+        console.log(`profile_image : `, profile_image)
         console.log(`${email} post signup`)
 
         // email 중복 체크
